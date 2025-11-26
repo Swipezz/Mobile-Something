@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4285F4"> <ImageView
+    android:id="@+id/bgHeader"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:scaleType="fitXY"
+    android:src="@drawable/bg_blue"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardMapContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="-30dp"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/bgMap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/hafid_logo_map" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_sheet"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvDriverPhoto"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_launcher_background"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvDriverName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Adam Noverian"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/cvDriverPhoto"
+            app:layout_constraintTop_toTopOf="@id/cvDriverPhoto"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tvDriverName"
+            app:layout_constraintStart_toEndOf="@id/cvDriverPhoto">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/hafid_bintang"
+                app:tint="#FFD700"/>
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/hafid_bintang"
+                app:tint="#FFD700"/>
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/hafid_bintang"
+                app:tint="#FFD700"/>
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/hafid_bintang"
+                app:tint="#FFD700"/>
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/hafid_bintang"
+                app:tint="#FFD700"/>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/cvDriverPhoto"/>
+
+        <ImageView
+            android:id="@+id/icHome"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/hafid_rumah_main_biru"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider1"/>
+
+        <TextView
+            android:id="@+id/lblAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Your Address"
+            android:textSize="12sp"
+            android:textColor="@color/gray_text"
+            app:layout_constraintStart_toEndOf="@id/icHome"
+            app:layout_constraintTop_toTopOf="@id/icHome"/>
+
+        <TextView
+            android:id="@+id/tvAddressVal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Mie Ayam Sleko"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/icHome"
+            app:layout_constraintTop_toBottomOf="@id/lblAddress"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="#CCCCCC"
+            app:layout_constraintTop_toBottomOf="@id/icHome"
+            app:layout_constraintBottom_toTopOf="@id/icTime"
+            app:layout_constraintStart_toStartOf="@id/icHome"
+            app:layout_constraintEnd_toEndOf="@id/icHome"/>
+
+        <ImageView
+            android:id="@+id/icTime"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/hafid_jam"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAddressVal"/>
+
+        <TextView
+            android:id="@+id/lblTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Estimate Time"
+            android:textSize="12sp"
+            android:textColor="@color/gray_text"
+            app:layout_constraintStart_toEndOf="@id/icTime"
+            app:layout_constraintTop_toTopOf="@id/icTime"/>
+
+        <TextView
+            android:id="@+id/tvTimeVal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="20-25 min (on the way)"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/icTime"
+            app:layout_constraintTop_toBottomOf="@id/lblTime"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
