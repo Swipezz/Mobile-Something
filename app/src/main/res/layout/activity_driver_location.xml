@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/hafid_logo_map" />
+            android:src="@drawable/map_image" />
 
     </androidx.cardview.widget.CardView>
 

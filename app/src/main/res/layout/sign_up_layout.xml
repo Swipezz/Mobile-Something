@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -42,14 +42,13 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="452dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
@@ -76,7 +75,8 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="12dp"
-                    android:src="@drawable/google" />
+                    android:src="@drawable/google"
+                    android:contentDescription="Google Sign Up" />
 
                 <TextView
                     android:id="@+id/googleText"
@@ -135,7 +135,8 @@
                 android:background="@drawable/bg_edittext_otp"
                 android:hint="Name"
                 android:padding="14dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:inputType="textPersonName" />
 
         </androidx.cardview.widget.CardView>
 
@@ -154,7 +155,8 @@
                 android:background="@drawable/bg_edittext_otp"
                 android:hint="Email"
                 android:padding="14dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:inputType="textEmailAddress" />
 
         </androidx.cardview.widget.CardView>
 
@@ -170,7 +172,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="14dp">
+                android:paddingStart="14dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp">
 
                 <EditText
                     android:id="@+id/inputPassword"
@@ -179,7 +183,8 @@
                     android:background="@android:color/transparent"
                     android:hint="Password"
                     android:paddingEnd="40dp"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:inputType="textPassword" />
 
                 <ImageView
                     android:id="@+id/visibilityIcon"
@@ -187,7 +192,9 @@
                     android:layout_height="24dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/visibility_off" />
+                    android:src="@drawable/visibility_off"
+                    android:contentDescription="Toggle password visibility"
+                    android:paddingEnd="14dp" />
 
             </RelativeLayout>
 
@@ -214,7 +221,6 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Do you have account? "
@@ -232,9 +238,5 @@
                 android:clickable="true"
                 android:focusable="true"/>
         </LinearLayout>
-
-
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

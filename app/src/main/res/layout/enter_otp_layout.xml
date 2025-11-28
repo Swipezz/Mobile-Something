@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/iconBack"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/arrow_back"
+        android:contentDescription="Back" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -30,7 +44,7 @@
             android:textStyle="normal|bold" />
 
         <TextView
-            android:id="@+id/descSignUp"
+            android:id="@+id/descEnterOTP"
             android:layout_width="345dp"
             android:layout_height="wrap_content"
             android:text="Enter the OTP code we just sent you on your registered Email/Phone number"
@@ -53,17 +67,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="#F5F9FE"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="0dp"
-            app:cardMaxElevation="0dp"/>
 
         <LinearLayout
             android:id="@+id/otpContainer"
@@ -163,13 +166,13 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnResetPassword"
+            android:id="@+id/btnVerifyOTP"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:text="Reset Password"
+            android:text="Verify OTP"
             android:textColor="#FFFFFF"
             android:textAllCaps="false"
             app:backgroundTint="#3461FD"
@@ -183,7 +186,6 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Didn’t get OTP? "
@@ -203,8 +205,8 @@
         </LinearLayout>
     </LinearLayout>
 
+    <!-- Placeholder for logo/footer image -->
     <ImageView
-        android:id="@+id/imageView2"
         android:layout_width="164dp"
         android:layout_height="37dp"
         android:layout_marginBottom="28dp"
@@ -212,17 +214,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/frame2" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/arrow_back" />
+        app:srcCompat="@drawable/frame2"
+        android:contentDescription="Footer Image Placeholder" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
