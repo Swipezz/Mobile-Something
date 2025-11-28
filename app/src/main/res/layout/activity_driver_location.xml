@@ -35,6 +35,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/map_image" />
 
+
     </androidx.cardview.widget.CardView>
 
 
