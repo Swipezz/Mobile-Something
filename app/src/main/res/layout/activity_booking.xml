@@ -59,8 +59,10 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@id/iconStart"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@id/iconStart"
-            app:layout_constraintTop_toTopOf="@id/iconStart" />
+            app:layout_constraintTop_toTopOf="@id/iconStart"
+            app:layout_constraintVertical_bias="1.0" />
 
         <View
             android:id="@+id/dividerInput"
@@ -239,13 +241,13 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
             android:src="@drawable/hafid_x"
-            app:tint="#505050"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:tint="#505050" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
