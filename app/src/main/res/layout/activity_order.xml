@@ -68,6 +68,7 @@
             android:src="@drawable/hafid_rumah_main_biru"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divAddressHeader"/>
+
         <TextView
             android:id="@+id/tvOriginTitle"
             android:layout_width="0dp"
@@ -99,14 +100,17 @@
             app:layout_constraintStart_toStartOf="@id/tvOriginTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/icOrigin"
-            android:layout_marginBottom="12dp"/> <ImageView
-        android:id="@+id/icDest"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/hafid_bunder_oren"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/icOrigin"/>
+            android:layout_marginBottom="12dp"/>
+
+        <ImageView
+            android:id="@+id/icDest"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/hafid_bunder_oren"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/icOrigin"/>
+
         <TextView
             android:id="@+id/tvDestTitle"
             android:layout_width="0dp"
@@ -145,7 +149,7 @@
             android:id="@+id/lblPayment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Payment"
+            android:text="Payment Method"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -160,79 +164,79 @@
             android:layout_marginTop="12dp"
             app:layout_constraintTop_toBottomOf="@id/lblPayment"/>
 
-        <ImageView
-            android:id="@+id/icDana"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+        <TextView
+            android:id="@+id/lblEwallet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-Wallet"
+            android:textSize="12sp"
+            android:textColor="@color/gray_text"
             android:layout_marginTop="12dp"
-            android:src="@drawable/hafid_dana"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divPayHeader"/>
-        <TextView
-            android:id="@+id/tvDanaTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:text="Dana"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@id/icDana"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/icDana"/>
+
+        <LinearLayout
+            android:id="@+id/containerEwallet"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_rounded_outline"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@id/lblEwallet">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/hafid_dana"
+                android:layout_marginStart="12dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerEwallet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/ewallet_options"/>
+        </LinearLayout>
+
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/lblBank"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="**** **** ****123"
+            android:text="Bank Transfer"
             android:textSize="12sp"
             android:textColor="@color/gray_text"
-            app:layout_constraintStart_toStartOf="@id/tvDanaTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDanaTitle"/>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="#E0E0E0"
-            android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="@id/tvDanaTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/icDana"/>
-
-        <ImageView
-            android:id="@+id/icBank"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/hafid_atm"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/icDana"/>
-        <TextView
-            android:id="@+id/tvBankTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:text="Bank"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@id/icBank"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/icBank"/>
+            app:layout_constraintTop_toBottomOf="@id/containerEwallet"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="**** **** ****123"
-            android:textSize="12sp"
-            android:textColor="@color/gray_text"
-            app:layout_constraintStart_toStartOf="@id/tvBankTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvBankTitle"/>
+        <LinearLayout
+            android:id="@+id/containerBank"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_rounded_outline"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@id/lblBank">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/hafid_atm"
+                android:layout_marginStart="12dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerBank"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/bank_options"/>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnContinue"
+        android:id="@+id/btnContinueOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/blue_button_bg"
