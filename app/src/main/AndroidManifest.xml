@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ngojek">
         <activity
+            android:name=".RatingActivity"
+            android:exported="false" />
+        <activity
             android:name=".DriverActivity"
             android:exported="false" />
         <activity
@@ -24,10 +27,6 @@
                 android:name=".OrderActivity"
                 android:exported="false"
                 tools:ignore="DuplicateActivity" />
-            <activity
-                android:name=".DriverActivity"
-                android:exported="false"
-                tools:ignore="MissingClass" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
