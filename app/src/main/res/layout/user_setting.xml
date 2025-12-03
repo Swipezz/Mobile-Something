@@ -213,7 +213,7 @@
                                 android:orientation="horizontal">
                                 <com.google.android.material.imageview.ShapeableImageView
                                     android:id="@+id/ricyqjkqoke"
-                                    android:layout_width="70dp"
+                                    android:layout_width="50dp"
                                     android:layout_height="48dp"
                                     android:src="@drawable/alfian_indo"
                                     android:scaleType="fitXY"
@@ -254,7 +254,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="32dp"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/alfian_garis"
                     android:scaleType="fitXY"
                     />
                 <LinearLayout
@@ -536,6 +536,7 @@
                         android:gravity="end"
                         android:paddingTop="24dp"
                         android:orientation="horizontal">
+
                         <LinearLayout
                             android:id="@+id/rdl8u8g6m3x7"
                             android:layout_width="wrap_content"
@@ -577,7 +578,6 @@
                             android:orientation="horizontal">
                             <TextView
                                 android:id="@+id/ruviu5xwcr"
-                                android:textColor="#FFFFFF"
                                 android:textSize="14sp"
                                 android:textStyle="bold"
                                 android:layout_marginEnd="10dp"
@@ -586,11 +586,10 @@
                                 android:text="Save"
                                 />
                             <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/rcfu2h67x96c"
+                                android:id="@+id/cecklist"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:src="@drawable/alfian_centang"
-                                android:scaleType="fitXY"
                                 />
                         </LinearLayout>
                     </LinearLayout>
@@ -626,9 +625,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <ImageView
+                    android:id="@+id/btn_home"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:src="@drawable/alfian_rumah_main_biru"
+                    android:src="@drawable/alfian_rumah_main"
                     android:elevation="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/center_button_placeholder"
@@ -638,8 +638,7 @@
                 <ImageView
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:src="@drawable/alfian_wong_main"
-                    app:tint="#CCC"
+                    android:src="@drawable/alfian_wong_main_biru"
                     android:elevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/center_button_placeholder"

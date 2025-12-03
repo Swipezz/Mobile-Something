@@ -12,6 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ngojek">
         <activity
+            android:name=".LocationPickActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RideHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserSetting"
+            android:exported="false" />
+        <activity
+            android:name=".UserSettings"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".RatingActivity"
             android:exported="false" />
         <activity
