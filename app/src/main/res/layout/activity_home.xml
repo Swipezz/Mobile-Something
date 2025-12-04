@@ -48,7 +48,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/frame4"
+                        android:src="@drawable/map_image"
                         tools:ignore="ContentDescription" />
                 </com.google.android.material.card.MaterialCardView>
 
@@ -88,7 +88,6 @@
                             android:layout_weight="1"/>
 
                         <ImageView
-                            android:id="@+id/icon_search"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@android:drawable/ic_menu_search"

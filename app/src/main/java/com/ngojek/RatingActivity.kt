@@ -75,9 +75,9 @@ class RatingActivity : AppCompatActivity() {
     // Fungsi tambahan jika kamu ingin menutup halaman rating
     private fun finishRating() {
         // Misalnya kembali ke halaman awal (Home/Booking)
-        // val intent = Intent(this, BookingActivity::class.java)
-        // intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-        // startActivity(intent)
-        // finish()
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+         startActivity(intent)
+         finish()
     }
 }

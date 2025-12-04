@@ -14,7 +14,6 @@ class DriverActivity : AppCompatActivity() {
         setContentView(R.layout.activity_driver_location) // Pastikan nama layout XML sesuai
         supportActionBar?.hide()
 
-        // Tampilkan pesan agar user tahu harus menunggu
         Toast.makeText(this, "Simulasi perjalanan dimulai... (Tunggu 10 detik)", Toast.LENGTH_LONG).show()
 
         // LOGIC TIMER 10 DETIK
