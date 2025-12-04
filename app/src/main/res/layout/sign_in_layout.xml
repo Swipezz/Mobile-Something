@@ -168,13 +168,14 @@
 
                 <ImageView
                     android:id="@+id/visibilityIcon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/visibility_off"
-                    android:contentDescription="Toggle password visibility"
-                    android:paddingEnd="14dp" />
+                    android:src="@drawable/ic_visibility_off"
+                    android:padding="6dp"
+                    android:contentDescription="Toggle password"/>
+
 
             </RelativeLayout>
 
