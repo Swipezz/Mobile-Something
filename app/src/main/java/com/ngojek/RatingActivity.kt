@@ -46,21 +46,25 @@ class RatingActivity : AppCompatActivity() {
         star1.setOnClickListener {
             updateStarColors(1)
             Toast.makeText(this, "Rating: 1 Bintang", Toast.LENGTH_SHORT).show()
+            finishRating()
         }
 
         star2.setOnClickListener {
             updateStarColors(2)
             Toast.makeText(this, "Rating: 2 Bintang", Toast.LENGTH_SHORT).show()
+            finishRating()
         }
 
         star3.setOnClickListener {
             updateStarColors(3)
             Toast.makeText(this, "Rating: 3 Bintang", Toast.LENGTH_SHORT).show()
+            finishRating()
         }
 
         star4.setOnClickListener {
             updateStarColors(4)
             Toast.makeText(this, "Rating: 4 Bintang", Toast.LENGTH_SHORT).show()
+            finishRating()
         }
 
         star5.setOnClickListener {
@@ -68,7 +72,7 @@ class RatingActivity : AppCompatActivity() {
             Toast.makeText(this, "Rating: 5 Bintang! Mantap!", Toast.LENGTH_SHORT).show()
 
             // OPSIONAL: Jika klik bintang 5 langsung selesai dan kembali ke menu awal
-            // finishRating()
+            finishRating()
         }
     }
 

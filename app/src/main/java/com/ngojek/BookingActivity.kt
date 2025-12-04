@@ -66,6 +66,12 @@ class BookingActivity : AppCompatActivity() {
                 Toast.makeText(this, "Isi lokasi dulu ya", Toast.LENGTH_SHORT).show()
             }
         }
+        val btnSelectMap = findViewById<LinearLayout>(R.id.btnSelectMap)
+
+        btnSelectMap.setOnClickListener {
+            val intent = Intent(this, LocationPickActivity::class.java)
+            startActivity(intent)
+        }
 
         val btnClose = findViewById<ImageView>(R.id.btnClose)
         btnClose.setOnClickListener {

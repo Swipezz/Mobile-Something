@@ -31,14 +31,14 @@ class OrderActivity : AppCompatActivity() {
             val selectedBank = spinnerBank.selectedItem.toString()
 
             // Contoh validasi sederhana (opsional)
-            // if (selectedWallet == "Pilih E-Wallet..." && selectedBank == "Pilih Bank...") {
-            //     Toast.makeText(this, "Pilih metode pembayaran dulu", Toast.LENGTH_SHORT).show()
-            // } else {
+             if (selectedWallet == "Pilih E-Wallet..." && selectedBank == "Pilih Bank...") {
+                 Toast.makeText(this, "Pilih metode pembayaran dulu", Toast.LENGTH_SHORT).show()
+             } else {
 
             // PINDAH KE HALAMAN DRIVER
             val intent = Intent(this, DriverActivity::class.java)
             startActivity(intent)
-            // }
+             }
         }
     }
 }
