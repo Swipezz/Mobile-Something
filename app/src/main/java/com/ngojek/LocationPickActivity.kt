@@ -28,18 +28,10 @@ class LocationPickActivity : AppCompatActivity() {
             insets
         }
 
-        // ==========================
-        // 🔗 Ambil semua view dari XML
-        // ==========================
-
         val btnSearchContainer = findViewById<LinearLayout>(R.id.btn_search_destination)
         val etSearch = findViewById<EditText>(R.id.et_search)
         val btnSearch = findViewById<ImageView>(R.id.btn_search)
         val btnConfirm = findViewById<MaterialButton>(R.id.btn_confirm)
-
-        // ==========================
-        // 🔍 Aksi ketika pencarian diklik
-        // ==========================
 
         btnSearchContainer.setOnClickListener {
             Toast.makeText(this, "Klik search bar", Toast.LENGTH_SHORT).show()
@@ -55,15 +47,10 @@ class LocationPickActivity : AppCompatActivity() {
             }
         }
 
-        // ==========================
-        // ✔ Tombol Confirm ditekan
-        // ==========================
-
         btnConfirm.setOnClickListener {
             Toast.makeText(this, "Lokasi dikonfirmasi", Toast.LENGTH_SHORT).show()
 
-            // Jika mau pindah ke halaman lain contoh:
-            // startActivity(Intent(this, OrderConfirmActivity::class.java))
+ startActivity(Intent(this, OrderActivity::class.java))
         }
     }
 }

@@ -35,7 +35,6 @@ class SignIn : Fragment() {
         val inputPassword: EditText = view.findViewById(R.id.inputPassword)
         val visibilityIcon: ImageView = view.findViewById(R.id.visibilityIcon)
 
-        // ------------------ Toggle Password Visibility ------------------
         visibilityIcon.setOnClickListener {
             isPasswordVisible = !isPasswordVisible
 

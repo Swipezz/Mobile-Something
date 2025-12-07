@@ -1,4 +1,4 @@
-package com.ngojek // Sesuaikan package
+package com.ngojek
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-// Adapter ini menerima list data (String) dan fungsi 'onClick'
 class LocationAdapter(
     private val locationList: MutableList<String>,
     private val onItemClick: (String) -> Unit
@@ -26,11 +25,9 @@ class LocationAdapter(
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
         val locationName = locationList[position]
 
-        // Set teks ke layout item
         holder.tvName.text = locationName
         holder.tvAddress.text = "Riwayat lokasi yang kamu simpan"
 
-        // Saat item list diklik -> panggil fungsi onClick (kirim nama lokasi)
         holder.itemView.setOnClickListener {
             onItemClick(locationName)
         }

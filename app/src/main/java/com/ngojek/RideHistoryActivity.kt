@@ -30,7 +30,6 @@ class RideHistoryActivity : AppCompatActivity() {
 
         btnBack.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
-             // kembali ke halaman sebelumnya
         }
 
         val close1 = findViewById<ImageView?>(R.id.rnl6xgq6hcg)

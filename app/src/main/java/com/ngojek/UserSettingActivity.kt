@@ -25,7 +25,6 @@ class UserSettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_setting)
 
-        // 🔗 Hubungkan ID
         fullName = findViewById(R.id.rvm66v2klmh)
         email = findViewById(R.id.rlwj24u46c68)
         phone = findViewById(R.id.rcnhr5ucwpeo)
@@ -37,20 +36,16 @@ class UserSettingActivity : AppCompatActivity() {
         btnCancel = findViewById(R.id.rdl8u8g6m3x7)
         btnHome = findViewById(R.id.btn_home)
 
-
-        // Aktifkan sistem tap-to-edit
         enableTapToEdit(fullName)
         enableTapToEdit(email)
         enableTapToEdit(phone)
         enableTapToEdit(cardNumber)
         enableTapToEdit(danaNumber)
 
-        // Tombol save → matikan mode edit lagi
         btnSave.setOnClickListener {
             disableAll()
         }
 
-        // Tombol cancel → matikan mode edit juga
         btnCancel.setOnClickListener {
             disableAll()
         }
@@ -62,7 +57,6 @@ class UserSettingActivity : AppCompatActivity() {
         }
     }
 
-    //  Fungsi agar kolom tidak bisa diubah
     private fun setEditable(editText: EditText, enable: Boolean) {
         editText.isFocusable = enable
         editText.isFocusableInTouchMode = enable
@@ -70,19 +64,15 @@ class UserSettingActivity : AppCompatActivity() {
         editText.isEnabled = enable
     }
 
-    // Fitur Tap-to-Edit (inti)
     private fun enableTapToEdit(editText: EditText) {
-        // Awalnya non-editable
         setEditable(editText, false)
 
-        // Ketika user men-tap → langsung bisa edit
         editText.setOnClickListener {
             setEditable(editText, true)
             editText.requestFocus()
         }
     }
 
-    // 🔒 Setelah save/cancel → semua terkunci lagi
     private fun disableAll() {
         setEditable(fullName, false)
         setEditable(email, false)

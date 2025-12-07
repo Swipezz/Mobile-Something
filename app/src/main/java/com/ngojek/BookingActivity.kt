@@ -13,7 +13,6 @@ import com.ngojek.LocationAdapter
 
 class BookingActivity : AppCompatActivity() {
 
-    // Siapkan wadah untuk data lokasi
     private val savedLocations = mutableListOf<String>()
     private lateinit var adapter: LocationAdapter
 
@@ -22,15 +21,11 @@ class BookingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_booking)
         supportActionBar?.hide()
 
-        // 1. Inisialisasi Komponen
         val etDest = findViewById<EditText>(R.id.etDest)
-        val btnAddDest = findViewById<LinearLayout>(R.id.layoutActions).getChildAt(1) // Mengambil tombol "Add a destination"
-        // ATAU lebih aman beri ID di LinearLayout tombol Add tadi, misal: btnAddDestination
-
+        val btnAddDest = findViewById<LinearLayout>(R.id.layoutActions).getChildAt(1)
         val rvLocations = findViewById<RecyclerView>(R.id.rvLocations)
 
-        // 2. Setup RecyclerView (List)
-        // Saat item diklik, teksnya akan dicopy ke EditText atas
+
         adapter = LocationAdapter(savedLocations) { selectedLocation ->
             etDest.setText(selectedLocation)
             Toast.makeText(this, "Lokasi terpilih: $selectedLocation", Toast.LENGTH_SHORT).show()
@@ -39,16 +34,8 @@ class BookingActivity : AppCompatActivity() {
         rvLocations.layoutManager = LinearLayoutManager(this)
         rvLocations.adapter = adapter
 
-        // 3. Logika Tombol "Add a destination"
-        // Karena di XML tombolnya ada di dalam LinearLayout tanpa ID spesifik,
-        // pastikan kamu memberi ID pada LinearLayout pembungkus tombol "Add a destination" di XML.
-        // Misal id-nya: @+id/btnAddDestinationContainer
 
-        val btnAdd = findViewById<LinearLayout>(R.id.layoutActions) // Ini contoh ambil parent-nya dulu
-        // Tips: Sebaiknya buka XML dan beri ID: android:id="@+id/btnAddAction" pada LinearLayout tombol oranye itu
-
-        // Anggap saja kamu sudah memberi ID @+id/btnAddAction di XML pada tombol oranye
-        // val btnAddAction = findViewById<LinearLayout>(R.id.btnAddAction)
+        val btnAdd = findViewById<LinearLayout>(R.id.layoutActions)
         val layoutActions = findViewById<LinearLayout>(R.id.layoutActions)
         val btnAddAction = layoutActions.getChildAt(1) // Tombol "Add a destination"
 

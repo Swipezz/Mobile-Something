@@ -1,4 +1,4 @@
-package com.ngojek // Sesuaikan package
+package com.ngojek
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,14 +16,14 @@ class DriverActivity : AppCompatActivity() {
 
         Toast.makeText(this, "Simulasi perjalanan dimulai... (Tunggu 10 detik)", Toast.LENGTH_LONG).show()
 
-        // LOGIC TIMER 10 DETIK
+
         Handler(Looper.getMainLooper()).postDelayed({
 
-            // Aksi yang dilakukan setelah 10 detik (10000 ms) berlalu:
+
             val intent = Intent(this, RatingActivity::class.java)
             startActivity(intent)
-            finish() // Menutup halaman Driver agar tidak bisa kembali (Back)
+            finish()
 
-        }, 10000) // 10000 milidetik = 10 detik
+        }, 10000)
     }
 }

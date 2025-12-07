@@ -29,12 +29,10 @@ class SignUp : Fragment() {
         val btnCreate: MaterialButton = view.findViewById(R.id.btnCreateAccount)
         val linkSignIn: TextView = view.findViewById(R.id.linkSignIn)
 
-        // Pindah ke Sign In ketika klik "Sign In"
         linkSignIn.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
 
-        // Tombol Create Account ditekan
         btnCreate.setOnClickListener {
 
             val name = inputName.text.toString().trim()
