@@ -17,17 +17,22 @@ class LocationPickActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // DEMO HIGHLIGHT: "Modern UI Experience"
+        // Jelaskan: "Kami menggunakan 'enableEdgeToEdge' agar tampilan Peta terlihat luas
+        // dan imersif sampai ke belakang status bar (jam/baterai) dan navigasi bawah."
         enableEdgeToEdge()
         setContentView(R.layout.pick_location)
 
+        // Logic untuk menangani padding agar tombol tidak tertutup system bar
         val root: View = findViewById(android.R.id.content)
-
         ViewCompat.setOnApplyWindowInsetsListener(root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
+        // Inisialisasi Komponen
         val btnSearchContainer = findViewById<LinearLayout>(R.id.btn_search_destination)
         val etSearch = findViewById<EditText>(R.id.et_search)
         val btnSearch = findViewById<ImageView>(R.id.btn_search)
@@ -37,6 +42,9 @@ class LocationPickActivity : AppCompatActivity() {
             Toast.makeText(this, "Klik search bar", Toast.LENGTH_SHORT).show()
         }
 
+        // DEMO NOTE: "Simulasi Pencarian Lokasi"
+        // Jelaskan: "Di prototype ini, saat user mencari lokasi, kita lakukan validasi input.
+        // Jika input ada, kita berikan feedback visual bahwa sistem sedang mencari titik koordinat."
         btnSearch.setOnClickListener {
             val text = etSearch.text.toString()
 
@@ -47,10 +55,13 @@ class LocationPickActivity : AppCompatActivity() {
             }
         }
 
+        // DEMO NOTE: "Konfirmasi Pinpoint Map"
+        // Jelaskan: "Setelah user menentukan titik jemput yang pas di peta,
+        // tombol Confirm akan membawa data tersebut ke halaman Order Summary."
         btnConfirm.setOnClickListener {
             Toast.makeText(this, "Lokasi dikonfirmasi", Toast.LENGTH_SHORT).show()
 
- startActivity(Intent(this, OrderActivity::class.java))
+            startActivity(Intent(this, OrderActivity::class.java))
         }
     }
 }

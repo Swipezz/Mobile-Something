@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 
 class RatingActivity : AppCompatActivity() {
 
+    // DEMO NOTE: "State Management sederhana. Kita butuh variabel ini untuk
+    // 'mengingat' berapa bintang yang dipilih user sebelum tombol Confirm ditekan."
     private var currentRating = 5
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,26 +25,29 @@ class RatingActivity : AppCompatActivity() {
         val star3 = findViewById<ImageView>(R.id.star3)
         val star4 = findViewById<ImageView>(R.id.star4)
         val star5 = findViewById<ImageView>(R.id.star5)
-
-        // Tombol Confirm (Pastikan ID di XML sudah @+id/btnConfirm)
         val btnConfirm = findViewById<Button>(R.id.btnConfirm)
 
         val stars = listOf(star1, star2, star3, star4, star5)
 
-        // Fungsi untuk mengubah warna bintang visual
+        // DEMO HIGHLIGHT: ALGORITMA PERUBAHAN WARNA
+        // Jelaskan: "Fungsi ini adalah otak visualnya. Dia melakukan looping:
+        // Jika saya klik bintang 3, maka bintang 1, 2, & 3 diubah jadi Kuning (Gold),
+        // sisanya jadi Abu-abu. Ini memberikan efek visual rating yang nyata."
         fun updateStarColors(rating: Int) {
-            currentRating = rating // Simpan nilai rating terakhir
+            currentRating = rating
 
             for (i in stars.indices) {
                 if (i < rating) {
-                    stars[i].setColorFilter(Color.parseColor("#FFD700")) // Kuning
+                    stars[i].setColorFilter(Color.parseColor("#FFD700")) // Kuning Emas
                 } else {
                     stars[i].setColorFilter(Color.parseColor("#E0E0E0")) // Abu-abu
                 }
             }
         }
 
-        // 2. Setup Listener Bintang (Hanya ubah tampilan, JANGAN pindah activity dulu)
+        // 2. Setup Listener Bintang (Interaksi Lokal)
+        // Jelaskan: "Saat bintang diklik, kita hanya update tampilan & variabel.
+        // Kita BELUM mengirim data ke server/pindah halaman."
         star1.setOnClickListener {
             updateStarColors(1)
             Toast.makeText(this, "1 Bintang dipilih", Toast.LENGTH_SHORT).show()
@@ -68,19 +73,24 @@ class RatingActivity : AppCompatActivity() {
             Toast.makeText(this, "5 Bintang dipilih", Toast.LENGTH_SHORT).show()
         }
 
-        // 3. Setup Tombol Confirm (Baru pindah activity di sini)
+        // 3. Setup Tombol Confirm (Finalisasi)
+        // Jelaskan: "Ini adalah tombol komitmen. Saat ditekan, barulah transaksi dianggap selesai."
         btnConfirm.setOnClickListener {
             Toast.makeText(this, "Terima kasih atas rating $currentRating bintang!", Toast.LENGTH_SHORT).show()
 
-            // Di sini nanti bisa tambahkan kode untuk kirim data rating ke Server/API
+            // (Disini tempat API Call untuk kirim rating ke database)
 
             finishRating()
         }
     }
 
+    // DEMO HIGHLIGHT: NAVIGASI & KEAMANAN UX
     private fun finishRating() {
         val intent = Intent(this, HomeActivity::class.java)
-        // Clear stack agar user tidak bisa back ke halaman rating
+
+        // Jelaskan: "Sangat Penting: Kita pakai FLAG_ACTIVITY_CLEAR_TOP.
+        // Tujuannya menghapus 'riwayat' perjalanan. Jadi kalau user tekan tombol Back di HP,
+        // dia TIDAK BISA kembali ke halaman rating ini lagi (karena ordernya sudah selesai)."
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
         finish()

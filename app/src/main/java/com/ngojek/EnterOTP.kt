@@ -13,6 +13,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 class EnterOTP : Fragment() {
+
+    // DEMO NOTE: "Untuk keperluan demo/prototipe, kita hardcode OTP yang benar adalah '123456'.
+    // Di aplikasi asli, ini akan divalidasi ke server."
     private val DUMMY_CORRECT_OTP = "123456"
     private lateinit var otpFields: List<EditText>
 
@@ -29,6 +32,7 @@ class EnterOTP : Fragment() {
         val btnVerifyOTP: Button = view.findViewById(R.id.btnVerifyOTP)
         val iconBack: ImageView = view.findViewById(R.id.iconBack)
 
+        // List untuk menampung 6 kotak input
         otpFields = listOf(
             view.findViewById(R.id.otp1),
             view.findViewById(R.id.otp2),
@@ -45,6 +49,7 @@ class EnterOTP : Fragment() {
         }
 
         btnVerifyOTP.setOnClickListener {
+            // Gabungkan angka dari 6 kotak menjadi satu string
             val inputOtp = getCombinedOtp()
 
             if (inputOtp.length < 6) {
@@ -52,6 +57,8 @@ class EnterOTP : Fragment() {
                 return@setOnClickListener
             }
 
+            // DEMO NOTE: "Validasi sederhana: Jika input user cocok dengan '123456',
+            // maka user diizinkan masuk ke halaman Reset Password."
             if (inputOtp == DUMMY_CORRECT_OTP) {
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, ResetPassword())
@@ -64,18 +71,25 @@ class EnterOTP : Fragment() {
         }
     }
 
+    // DEMO NOTE: "Fitur UX (User Experience): Logic ini membuat kursor otomatis pindah
+    // ke kotak berikutnya saat user mengetik, atau mundur saat menghapus.
+    // Jadi user tidak perlu klik manual satu per satu."
     private fun setupOtpListeners() {
         for (i in otpFields.indices) {
             val currentOtp = otpFields[i]
             currentOtp.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
                 override fun afterTextChanged(s: Editable?) {
+                    // Logic pindah maju
                     if (s?.length == 1) {
                         if (i < otpFields.size - 1) {
                             otpFields[i + 1].requestFocus()
                         }
-                    } else if (s?.isEmpty() == true) {
+                    }
+                    // Logic pindah mundur (saat dihapus)
+                    else if (s?.isEmpty() == true) {
                         if (i > 0) {
                             otpFields[i - 1].requestFocus()
                         }

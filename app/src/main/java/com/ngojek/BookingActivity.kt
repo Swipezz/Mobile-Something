@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class BookingActivity : AppCompatActivity() {
 
-    // 1. Ubah List untuk menyimpan TripHistory, bukan String lagi
+    // DEMO NOTE: "Disini kita menggunakan List of TripHistory (bukan String biasa),
+    // tujuannya agar bisa menyimpan SEPASANG data: Lokasi Jemput & Tujuan dalam satu riwayat."
     private val savedTrips = mutableListOf<TripHistory>()
     private lateinit var adapter: LocationAdapter
 
@@ -22,8 +23,9 @@ class BookingActivity : AppCompatActivity() {
         val etDest = findViewById<EditText>(R.id.etDest)
         val rvLocations = findViewById<RecyclerView>(R.id.rvLocations)
 
-        // 2. Setup Adapter
-        // Callback sekarang menerima satu paket trip (origin & dest)
+// 1. Setup Adapter & Logic Klik Item
+        // DEMO NOTE: "Ini fitur UX penting: Saat user mengklik salah satu item di history,
+        // aplikasi otomatis mengisi KEDUA kolom (Jemput & Tujuan) sekaligus."
         adapter = LocationAdapter(savedTrips) { selectedTrip ->
             // Saat item riwayat diklik, ISIKAN KEDUA KOLOM SEKALIGUS
             etOrigin.setText(selectedTrip.origin)
@@ -46,7 +48,8 @@ class BookingActivity : AppCompatActivity() {
             // Validasi: Pastikan minimal salah satu terisi (atau keduanya, sesuai kebutuhanmu)
             if (textOrigin.isNotEmpty() || textDest.isNotEmpty()) {
 
-                // BUAT PAKET: Gabungkan origin dan dest dalam satu objek
+                // DEMO NOTE: "Kita membungkus input Jemput & Tujuan menjadi satu objek 'newTrip',
+                // lalu objek itulah yang disimpan ke dalam list RecyclerView."
                 val newTrip = TripHistory(
                     origin = textOrigin,
                     destination = textDest
@@ -78,6 +81,9 @@ class BookingActivity : AppCompatActivity() {
 
         val btnContinue = findViewById<Button>(R.id.btnContinueBooking)
         btnContinue.setOnClickListener {
+
+            // DEMO NOTE: "Validasi Wajib: Kita memastikan user tidak bisa lanjut order
+            // kalau lokasi jemput atau tujuan masih kosong."
             if (etOrigin.text.isNotEmpty() && etDest.text.isNotEmpty()) {
                 val intent = Intent(this, OrderActivity::class.java)
                 startActivity(intent)
