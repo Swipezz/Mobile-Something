@@ -50,6 +50,7 @@ class HomeActivity : AppCompatActivity() {
         // ✨ PERUBAHAN UTAMA: Memuat Fragment saat btnProfile diklik
         btnProfile.setOnClickListener {
             loadFragment(UserSettingFragment())
+            btnHome.setImageResource(R.drawable.alfian_rumah_main)
         }
     }
 
