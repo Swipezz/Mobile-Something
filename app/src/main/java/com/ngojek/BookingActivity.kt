@@ -22,6 +22,12 @@ class BookingActivity : AppCompatActivity() {
         val etOrigin = findViewById<EditText>(R.id.etOrigin)
         val etDest = findViewById<EditText>(R.id.etDest)
         val rvLocations = findViewById<RecyclerView>(R.id.rvLocations)
+        
+        // Get destination from intent if available
+        val destinationFromIntent = intent.getStringExtra("DESTINATION_NAME")
+        if (!destinationFromIntent.isNullOrEmpty()) {
+            etDest.setText(destinationFromIntent)
+        }
 
 // 1. Setup Adapter & Logic Klik Item
         // DEMO NOTE: "Ini fitur UX penting: Saat user mengklik salah satu item di history,

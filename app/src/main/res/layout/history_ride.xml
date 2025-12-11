@@ -44,6 +44,7 @@
 
 
             <LinearLayout
+                android:id="@+id/history_item1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -90,6 +91,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/history_item2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -135,6 +137,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/history_item3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -180,6 +183,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/history_item4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -226,6 +230,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/history_item5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"

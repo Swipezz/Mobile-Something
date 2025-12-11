@@ -13,9 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.card.MaterialCardView
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), BottomNavCallback {
 
-    // ID Container di XML tempat Fragment akan "ditempel"
     private val CONTAINER_ID = R.id.fragment_container
 
     data class DestinationItem(val name: String, val layout: View)
@@ -25,13 +24,14 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // 1. Inisialisasi View
+        // ---------- INIT UI ----------
+        val btnMapIcon = findViewById<ImageView>(R.id.img_map_preview)
         val btnHistoryIcon = findViewById<ImageView>(R.id.btn_history_icon)
         val btnSearchLayout = findViewById<LinearLayout>(R.id.btn_search_destination)
         val etSearch = findViewById<EditText>(R.id.text_search_placeholder)
 
         val btnHome = findViewById<ImageView>(R.id.btn_home)
-        val btnProfile = findViewById<ImageView>(R.id.btn_profile) // FOKUS FRAGMENT DISINI
+        val btnProfile = findViewById<ImageView>(R.id.btn_profile)
         val btnMotor = findViewById<MaterialCardView>(R.id.btn_motor)
 
         val layoutMieAyam = findViewById<LinearLayout>(R.id.item_mie_ayam)
@@ -44,27 +44,42 @@ class HomeActivity : AppCompatActivity() {
             DestinationItem("Kwarcap", layoutKwarcap)
         )
 
-        // --- Logic Navigasi Biasa (Activity) ---
+        // Default load HomeFragment
+        loadFragment(HomeFragment())
+        btnHome.setImageResource(R.drawable.alfian_rumah_main_biru)
+
+        // ---------- BUTTON NAVIGATION ----------
         btnHistoryIcon.setOnClickListener {
             startActivity(Intent(this, RideHistoryActivity::class.java))
+        }
+
+        btnMapIcon.setOnClickListener {
+            startActivity(Intent(this, LocationPickActivity::class.java))
         }
 
         btnMotor.setOnClickListener {
             startActivity(Intent(this, BookingActivity::class.java))
         }
 
-        // --- DEMO POINT: NAVIGASI FRAGMENT (PROFILE) ---
-        // Jelaskan: "Untuk halaman Profile, kita tidak pindah Activity.
-        // Kita menggunakan Fragment agar transisi lebih mulus dan ringan."
-        btnProfile.setOnClickListener {
-            loadFragment(UserSettingFragment())
-
-            // Opsional: Visual feedback mengubah ikon home
-            btnHome.setImageResource(R.drawable.alfian_rumah_main)
+        btnSearchLayout.setOnClickListener {
+            startActivity(Intent(this, BookingActivity::class.java))
         }
 
-        // --- LOGIC PENCARIAN (SEARCH SYSTEM) ---
-        // Jelaskan singkat: "Fitur search real-time menggunakan TextWatcher"
+        // HOME
+        btnHome.setOnClickListener {
+            loadFragment(HomeFragment())
+            btnHome.setImageResource(R.drawable.alfian_rumah_main_biru)
+            btnProfile.setImageResource(R.drawable.alfian_wong_main)
+        }
+
+        // PROFILE → menggunakan Fragment
+        btnProfile.setOnClickListener {
+            loadFragment(UserSettingFragment())
+            btnHome.setImageResource(R.drawable.alfian_rumah_main)
+            btnProfile.setImageResource(R.drawable.alfian_wong_main_biru)
+        }
+
+        // ---------- REALTIME SEARCH ----------
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
@@ -76,18 +91,17 @@ class HomeActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        layoutMieAyam.setOnClickListener { navigateToBooking("Mie ayam") }
-        layoutMasJo.setOnClickListener { navigateToBooking("Mas Jo") }
-        layoutKwarcap.setOnClickListener { navigateToBooking("Kwarcap") }
+        // ---------- DESTINATION CLICK ----------
+        layoutMieAyam.setOnClickListener { navigateToBooking("Belakang sleko") }
+        layoutMasJo.setOnClickListener { navigateToBooking("Jl manyar no 5") }
+        layoutKwarcap.setOnClickListener { navigateToBooking("Depan poltek") }
     }
 
+    // FILTER ITEM
     private fun filterDestinations(query: String, list: List<DestinationItem>) {
         for (item in list) {
-            if (item.name.lowercase().contains(query)) {
-                item.layout.visibility = View.VISIBLE
-            } else {
-                item.layout.visibility = View.GONE
-            }
+            item.layout.visibility =
+                if (item.name.lowercase().contains(query)) View.VISIBLE else View.GONE
         }
     }
 
@@ -97,20 +111,32 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    // --- DEMO HIGHLIGHT: FUNGSI UTAMA FRAGMENT MANAGER ---
-    private fun loadFragment(fragment: Fragment) {
-        val container = findViewById<View>(R.id.fragment_container)
-        container.visibility = View.VISIBLE
-
-        // LOGIC PENTING:
-        // 1. beginTransaction(): Memulai proses perubahan UI
-        // 2. replace(): Mengganti isi container lama dengan Fragment baru
-        // 3. addToBackStack(): PENTING! Agar saat tombol Back HP ditekan,
-        //    dia kembali ke Home, bukan menutup aplikasi.
-        // 4. commit(): Eksekusi perubahan.
-        supportFragmentManager.beginTransaction()
+    // ---------- LOAD FRAGMENT ----------
+    private fun loadFragment(fragment: Fragment, addToBackStack: Boolean = false) {
+        val fragmentContainer = findViewById<View>(R.id.fragment_container)
+        
+        // Show container untuk fragment selain HomeFragment
+        // Hide container untuk HomeFragment (supaya konten home terlihat)
+        if (fragment is HomeFragment) {
+            fragmentContainer.visibility = View.GONE
+        } else {
+            fragmentContainer.visibility = View.VISIBLE
+        }
+        
+        val transaction = supportFragmentManager.beginTransaction()
             .replace(CONTAINER_ID, fragment)
-            .addToBackStack("user_settings")
-            .commit()
+
+        if (addToBackStack) transaction.addToBackStack("user_settings")
+
+        transaction.commit()
+    }
+
+    // Dipanggil dari UserSettingFragment ketika tombol Home ditekan
+    override fun onHomeSelectedFromFragment() {
+        val btnHome = findViewById<ImageView>(R.id.btn_home)
+        val btnProfile = findViewById<ImageView>(R.id.btn_profile)
+
+        btnHome.setImageResource(R.drawable.alfian_rumah_main_biru)
+        btnProfile.setImageResource(R.drawable.alfian_wong_main)
     }
 }

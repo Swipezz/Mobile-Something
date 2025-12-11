@@ -9,9 +9,9 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.button.MaterialButton
 
 class LocationPickActivity : AppCompatActivity() {
 
@@ -36,7 +36,7 @@ class LocationPickActivity : AppCompatActivity() {
         val btnSearchContainer = findViewById<LinearLayout>(R.id.btn_search_destination)
         val etSearch = findViewById<EditText>(R.id.et_search)
         val btnSearch = findViewById<ImageView>(R.id.btn_search)
-        val btnConfirm = findViewById<MaterialButton>(R.id.btn_confirm)
+        val btnConfirm = findViewById<AppCompatButton>(R.id.btn_confirm)
 
         btnSearchContainer.setOnClickListener {
             Toast.makeText(this, "Klik search bar", Toast.LENGTH_SHORT).show()

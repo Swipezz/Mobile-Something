@@ -37,6 +37,12 @@ class RideHistoryActivity : AppCompatActivity() {
 
         // DEMO NOTE: "Untuk prototype ini, saya menyiapkan beberapa item dummy
         // agar user bisa melihat contoh tampilan riwayat perjalanan."
+        val item1 = findViewById<View>(R.id.history_item1)
+        val item2 = findViewById<View>(R.id.history_item2)
+        val item3 = findViewById<View>(R.id.history_item3)
+        val item4 = findViewById<View>(R.id.history_item4)
+        val item5 = findViewById<View>(R.id.history_item5)
+        
         val close1 = findViewById<ImageView?>(R.id.close_icon2)
         val close2 = findViewById<ImageView?>(R.id.close_icon3)
         val close3 = findViewById<ImageView?>(R.id.close_icon4)
@@ -46,18 +52,17 @@ class RideHistoryActivity : AppCompatActivity() {
         // DEMO HIGHLIGHT: PENGGUNAAN HELPER FUNCTION
         // Jelaskan: "Supaya kode saya rapi dan tidak berulang-ulang (Clean Code),
         // saya membuat fungsi khusus 'setCloseAction' untuk menangani klik pada setiap item."
-        setCloseAction(close1, "Item 1")
-        setCloseAction(close2, "Item 2")
-        setCloseAction(close3, "Item 3")
-        setCloseAction(close4, "Item 4")
-        setCloseAction(close5, "Item 5")
+        setCloseAction(close1, item1)
+        setCloseAction(close2, item2)
+        setCloseAction(close3, item3)
+        setCloseAction(close4, item4)
+        setCloseAction(close5, item5)
     }
 
     // Fungsi Helper untuk mengurangi duplikasi kode (DRY Principle)
-    private fun setCloseAction(btn: ImageView?, name: String) {
+    private fun setCloseAction(btn: ImageView?, itemView: View?) {
         btn?.setOnClickListener {
-            // Memberikan feedback sederhana saat user ingin menghapus/menutup item history
-            Toast.makeText(this, "$name ditutup", Toast.LENGTH_SHORT).show()
+            itemView?.visibility = View.GONE
         }
     }
 }
