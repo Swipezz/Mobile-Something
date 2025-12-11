@@ -105,7 +105,6 @@
 
                 </LinearLayout>
 
-                <!-- Save Address Section -->
                 <LinearLayout
                     android:id="@+id/section_save_address"
                     android:layout_width="match_parent"

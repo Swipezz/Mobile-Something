@@ -19,13 +19,6 @@
             android:name=".RideHistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".UserSettingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UserSettingActivity"
-            android:exported="false"
-            tools:ignore="DuplicateActivity" />
-        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity

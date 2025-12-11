@@ -47,15 +47,17 @@ class HomeActivity : AppCompatActivity() {
             // Jika HomeActivity hanya menampilkan HomeFragment, tidak perlu navigasi di sini.
         }
 
-        // ✨ PERUBAHAN UTAMA: Memuat Fragment saat btnProfile diklik
+        // PERUBAHAN UTAMA: Memuat Fragment saat btnProfile diklik
         btnProfile.setOnClickListener {
             loadFragment(UserSettingFragment())
+            btnHome.setImageResource(R.drawable.alfian_rumah_main)
+            btnProfile.setImageResource(R.drawable.alfian_wong_main_biru)
         }
     }
 
-    /**
-     * Fungsi untuk mengganti (replace) Fragment di container
-     */
+
+      //Fungsi untuk mengganti (replace) Fragment di container
+
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(CONTAINER_ID, fragment)
