@@ -7,7 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ScrollView
-        android:id="@+id/ro8ohtyrto1o"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -17,7 +16,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <LinearLayout
-                android:id="@+id/r4qf2gwg594u"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -25,16 +23,15 @@
                 android:layout_marginBottom="33dp"
                 android:layout_marginStart="35dp"
                 android:orientation="horizontal">
+
                 <ImageView
-                    android:id="@+id/ra4wqg4z93d5"
-                    android:layout_width="18dp"
+                    android:id="@+id/icon_back"
+                    android:layout_width="21dp"
                     android:layout_height="18dp"
                     android:layout_marginEnd="12dp"
-                    android:src="@drawable/alfian_x"
                     android:scaleType="fitXY"
-                    />
+                    android:src="@drawable/alfian_x" />
                 <TextView
-                    android:id="@+id/r5vc8g7525yf"
                     android:textColor="#1C1E1D"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -120,7 +117,6 @@
                                     android:paddingHorizontal="12dp"
                                     android:orientation="horizontal">
                                     <ImageView
-                                        android:id="@+id/rdt0zcfz5g6e"
                                         android:layout_width="20dp"
                                         android:layout_height="20dp"
                                         android:layout_marginEnd="8dp"
@@ -128,18 +124,15 @@
                                         android:scaleType="fitXY"
                                         />
                                     <EditText
-                                        android:inputType="text"
-                                        android:hint="Adam Noverian"
-                                        android:background="@null"
-                                        android:id="@+id/rvm66v2klmh"
-                                        android:textColor="#475569"
-                                        android:textSize="16sp"
-                                        android:layout_marginEnd="4dp"
-                                        android:layout_width="0dp"
+                                        android:id="@+id/full_name"
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:paddingVertical="13dp"
-                                        />
+                                        android:hint="Adam Noverian"
+                                        android:textColor="#000000"
+                                        android:textSize="16sp"
+                                        android:paddingVertical="13dp" />
+
                                 </LinearLayout>
                             </LinearLayout>
                             <LinearLayout
@@ -166,7 +159,7 @@
                                     android:paddingHorizontal="12dp"
                                     android:orientation="horizontal">
                                     <ImageView
-                                        android:id="@+id/r6mfzs6t20ba"
+                                        android:id="@+id/massage"
                                         android:layout_width="20dp"
                                         android:layout_height="20dp"
                                         android:layout_marginEnd="8dp"
@@ -174,28 +167,24 @@
                                         android:scaleType="fitXY"
                                         />
                                     <EditText
-                                        android:inputType="text"
-                                        android:hint="adamnoverian@gmail.com"
-                                        android:background="@null"
-                                        android:id="@+id/rlwj24u46c68"
-                                        android:textColor="#475569"
-                                        android:textSize="16sp"
-                                        android:layout_marginEnd="4dp"
+                                        android:id="@+id/email_address"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:paddingVertical="13dp"
-                                        />
+                                        android:hint="adamnoverian@gmail.com"
+                                        android:background="@null"
+                                        android:textColor="#475569"
+                                        android:textSize="16sp"
+                                        android:paddingVertical="13dp" />
+
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
-                            android:id="@+id/rascc4nvlzr"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
-                                android:id="@+id/rxcrlb75e2sg"
                                 android:textColor="#1E293B"
                                 android:textSize="14sp"
                                 android:textStyle="bold"
@@ -205,52 +194,53 @@
                                 android:text="Phone Number"
                                 />
                             <LinearLayout
-                                android:id="@+id/rljswq2snzfn"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_vertical"
                                 android:background="@drawable/bg_rounded_outline"
                                 android:orientation="horizontal">
+
                                 <com.google.android.material.imageview.ShapeableImageView
-                                    android:id="@+id/ricyqjkqoke"
+                                    android:id="@+id/indonesia_flag"
                                     android:layout_width="50dp"
                                     android:layout_height="48dp"
                                     android:src="@drawable/alfian_indo"
-                                    android:scaleType="fitXY"
-                                    />
+                                    android:scaleType="fitXY" />
+
                                 <LinearLayout
-                                    android:id="@+id/r140ephe29bxf"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:paddingVertical="12dp"
                                     android:orientation="horizontal">
+
                                     <TextView
-                                        android:id="@+id/rxu66j0j6skj"
+                                        android:id="@+id/no_indo"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="+62"
                                         android:textColor="#475569"
                                         android:textSize="16sp"
                                         android:textStyle="bold"
                                         android:layout_marginStart="12dp"
-                                        android:layout_marginEnd="9dp"
+                                        android:layout_marginEnd="9dp" />
+
+                                    <EditText
+                                        android:id="@+id/phone_number"
+                                        android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_width="wrap_content"
-                                        android:text="+62"
-                                        />
-                                    <TextView
-                                        android:id="@+id/rpgns5s8qg9"
+                                        android:layout_weight="1"
+                                        android:hint="856 1234 1234"
+                                        android:background="@null"
                                         android:textColor="#475569"
-                                        android:textSize="16sp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_width="wrap_content"
-                                        android:text="(856) 1234-1234"
-                                        />
+                                        android:textSize="16sp" />
                                 </LinearLayout>
                             </LinearLayout>
+
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
                 <ImageView
-                    android:id="@+id/rtsf2pacrs8o"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="32dp"
@@ -331,28 +321,24 @@
                                 android:paddingRight="12dp"
                                 android:orientation="horizontal">
                                 <EditText
-                                    android:inputType="text"
-                                    android:hint="1234 1234 1234 1234"
-                                    android:background="@null"
-                                    android:id="@+id/r0m4h1eoxmmcq"
-                                    android:textColor="#475569"
-                                    android:textSize="16sp"
-                                    android:layout_marginEnd="4dp"
+                                    android:id="@+id/credit_card_number"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:hint="1234 1234 1234 1234"
+                                    android:background="@null"
+                                    android:textSize="16sp"
                                     android:paddingVertical="13dp"
-                                    android:paddingLeft="12dp"
-                                    />
+                                    android:paddingLeft="12dp" />
+
                                 <LinearLayout
-                                    android:id="@+id/rnlhcq8ri17p"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingVertical="4dp"
                                     android:paddingHorizontal="2dp"
                                     android:orientation="vertical">
                                     <ImageView
-                                        android:id="@+id/rbq1qhj1ghza"
+                                        android:id="@+id/card_atm"
                                         android:layout_width="20dp"
                                         android:layout_height="16dp"
                                         android:src="@drawable/alfian_atm"
@@ -362,13 +348,11 @@
                             </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
-                            android:id="@+id/r5qoe9nbhovw"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="24dp"
                             android:orientation="vertical">
                             <TextView
-                                android:id="@+id/r1r7g3o0jr5l"
                                 android:textColor="#1E293B"
                                 android:textSize="14sp"
                                 android:textStyle="bold"
@@ -378,7 +362,6 @@
                                 android:text="Card Holder Name"
                                 />
                             <LinearLayout
-                                android:id="@+id/rlsh2xs50kj"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_vertical"
@@ -386,7 +369,6 @@
                                 android:padding="12dp"
                                 android:orientation="horizontal">
                                 <LinearLayout
-                                    android:id="@+id/r7q6uypvpa46"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingVertical="4dp"
@@ -402,25 +384,24 @@
                                         />
                                 </LinearLayout>
                                 <LinearLayout
-                                    android:id="@+id/rpwmg070neus"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:paddingBottom="1dp"
                                     android:orientation="vertical">
-                                    <TextView
-                                        android:id="@+id/rypo2hlyhw0k"
-                                        android:textColor="#475569"
-                                        android:textSize="16sp"
+                                    <EditText
+                                        android:id="@+id/card_name"
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_width="wrap_content"
-                                        android:text="Adam Noverian"
-                                        />
+                                        android:hint="Adam Noverian"
+                                        android:background="@null"
+                                        android:textColor="#475569"
+                                        android:textSize="16sp" />
+
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
                         <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/rgurndhpotf"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_marginBottom="24dp"
@@ -444,7 +425,6 @@
                                 android:text="Dana"
                                 />
                             <LinearLayout
-                                android:id="@+id/rlenrcvioreb"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_vertical"
@@ -452,22 +432,19 @@
                                 android:paddingRight="12dp"
                                 android:orientation="horizontal">
                                 <EditText
-                                    android:inputType="text"
-                                    android:hint="0856 1234 1234"
-                                    android:background="@null"
-                                    android:id="@+id/rcnhr5ucwpeo"
-                                    android:textColor="#475569"
-                                    android:textSize="16sp"
-                                    android:layout_marginEnd="4dp"
-                                    android:layout_width="0dp"
+                                    android:id="@+id/dana_number"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:hint="0856 1234 1234"
+                                    android:background="@null"
+                                    android:textColor="#475569"
+                                    android:textSize="16sp"
                                     android:paddingVertical="13dp"
-                                    android:paddingLeft="12dp"
-                                    />
+                                    android:paddingLeft="12dp" />
+
 
                                 <com.google.android.material.imageview.ShapeableImageView
-                                    android:id="@+id/rb9lh9ax2esq"
                                     android:layout_width="24dp"
                                     android:layout_height="20dp"
                                     android:scaleType="fitXY"
@@ -475,22 +452,19 @@
                             </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
-                            android:id="@+id/r9hvyf2bppz"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
-                                android:id="@+id/r65vl2ogqotr"
                                 android:textColor="#1E293B"
                                 android:textSize="14sp"
                                 android:textStyle="bold"
                                 android:layout_marginBottom="8dp"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
-                                android:text="Card Holder Name"
-                                />
+                                android:text="Card Holder Name"/>
                             <LinearLayout
-                                android:id="@+id/r4hq0rt9awhw"
+                                android:id="@+id/outline_dana_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_vertical"
@@ -498,7 +472,7 @@
                                 android:padding="12dp"
                                 android:orientation="horizontal">
                                 <com.google.android.material.imageview.ShapeableImageView
-                                    android:id="@+id/ro7np8vks7vd"
+                                    android:id="@+id/dana_icon"
                                     android:layout_width="24dp"
                                     android:layout_height="24dp"
                                     android:layout_marginEnd="12dp"
@@ -506,20 +480,20 @@
                                     android:scaleType="fitXY"
                                     />
                                 <LinearLayout
-                                    android:id="@+id/rsdyuj9boi2b"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:paddingBottom="1dp"
                                     android:orientation="vertical">
-                                    <TextView
-                                        android:id="@+id/rd4cup9sio5w"
-                                        android:textColor="#475569"
-                                        android:textSize="16sp"
+                                    <EditText
+                                        android:id="@+id/dana_name"
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_width="wrap_content"
-                                        android:text="Adam Noverian"
-                                        />
+                                        android:hint="Adam Noverian"
+                                        android:background="@null"
+                                        android:textColor="#475569"
+                                        android:textSize="16sp" />
+
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -530,7 +504,6 @@
                     android:layout_height="wrap_content">
                     <LinearLayout
                         tools:ignore="MissingConstraints"
-                        android:id="@+id/razfjs94v0m"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
@@ -538,7 +511,7 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:id="@+id/rdl8u8g6m3x7"
+                            android:id="@+id/outline_cancel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_rounded_outline"
@@ -549,8 +522,8 @@
                             android:focusable="true"
                             android:orientation="horizontal">
                             <TextView
-                                android:id="@+id/rwrxew226do"
-                                android:textColor="#475569"
+                                android:id="@+id/cancel_button"
+                                android:textColor="#1E293B"
                                 android:textSize="14sp"
                                 android:textStyle="bold"
                                 android:layout_marginEnd="11dp"
@@ -559,31 +532,32 @@
                                 android:text="Cancel"
                                 />
                             <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/r5mnaxwf2oja"
+                                android:id="@+id/cancel_icon"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:src="@drawable/alfian_x"
-                                android:scaleType="fitXY"
                                 />
                         </LinearLayout>
                         <LinearLayout
-                            android:id="@+id/rx1gtb8fjvjn"
+                            android:id="@+id/outline_save"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_rounded_outline"
+                            android:backgroundTint="#4F46E5"
                             android:paddingVertical="10dp"
                             android:paddingHorizontal="16dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:orientation="horizontal">
                             <TextView
-                                android:id="@+id/ruviu5xwcr"
+                                android:id="@+id/btn_save"
                                 android:textSize="14sp"
                                 android:textStyle="bold"
                                 android:layout_marginEnd="10dp"
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:text="Save"
+                                android:textColor="@android:color/white"
                                 />
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/cecklist"
@@ -626,8 +600,8 @@
 
                 <ImageView
                     android:id="@+id/btn_home"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:src="@drawable/alfian_rumah_main"
                     android:elevation="8dp"
                     app:layout_constraintStart_toStartOf="parent"

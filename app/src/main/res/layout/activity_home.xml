@@ -50,7 +50,10 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/map_image"
                         tools:ignore="ContentDescription" />
+
                 </com.google.android.material.card.MaterialCardView>
+
+
 
                 <!-- SEARCH & HISTORY ROW -->
                 <LinearLayout
@@ -61,7 +64,7 @@
                     android:layout_marginTop="24dp"
                     app:layout_constraintTop_toBottomOf="@id/card_map">
 
-                    <!-- Search Box -->
+
                     <LinearLayout
                         android:id="@+id/btn_search_destination"
                         android:layout_width="0dp"
@@ -78,11 +81,11 @@
                             android:layout_height="16dp"
                             android:src="@drawable/alfian_bunder_oren" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/text_search_placeholder"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Search for a destination"
+                            android:hint="Search for a destination"
                             android:textColor="#888"
                             android:layout_marginStart="12dp"
                             android:layout_weight="1"/>
@@ -90,19 +93,16 @@
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@android:drawable/ic_menu_search"
-                            app:tint="#555"/>
+                            android:src="@android:drawable/ic_menu_search" />
+
                     </LinearLayout>
 
-                    <!-- History Icon -->
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/btn_history_icon"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:scaleType="fitXY"
                         android:src="@drawable/alfian_history" />
 
-                    <!-- History Button -->
                 </LinearLayout>
 
                 <!-- Save Address Section -->
@@ -145,6 +145,11 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <!-- BOTTOM NAV BAR -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_bar"
@@ -160,13 +165,12 @@
             android:elevation="8dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <!-- Home Button -->
         <ImageView
             android:id="@+id/btn_home"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:src="@drawable/alfian_rumah_main_biru"
-            android:elevation="8dp"
+            android:elevation="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/center_button_placeholder"
             app:layout_constraintTop_toTopOf="@id/bottom_bar_bg"
@@ -178,7 +182,6 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/alfian_wong_main"
-            app:tint="#CCC"
             android:elevation="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/center_button_placeholder"

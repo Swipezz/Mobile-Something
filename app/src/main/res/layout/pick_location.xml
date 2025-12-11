@@ -78,7 +78,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
                         android:src="@android:drawable/ic_menu_search"
-                        app:tint="#555555"
                         tools:ignore="ContentDescription" />
 
                 </LinearLayout>

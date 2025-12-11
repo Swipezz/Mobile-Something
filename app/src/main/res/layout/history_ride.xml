@@ -7,7 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ScrollView
-        android:id="@+id/rnxj1siwo3i"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -17,7 +16,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <LinearLayout
-                android:id="@+id/r0eanvxhd54gt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -26,15 +24,15 @@
                 android:layout_marginStart="35dp"
                 android:orientation="horizontal">
                 <ImageView
-                    android:id="@+id/r3njbh0buxkn"
+                    android:id="@+id/icon_back"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_marginEnd="12dp"
                     android:src="@drawable/alfian_x"
                     android:scaleType="fitXY"
+                    android:contentDescription="Back"
                     />
                 <TextView
-                    android:id="@+id/r3jm29vfawq3"
                     android:textColor="#1C1E1D"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -43,8 +41,9 @@
                     android:text="History ride"
                     />
             </LinearLayout>
+
+
             <LinearLayout
-                android:id="@+id/rpq0fydtfha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -54,13 +53,11 @@
                 android:layout_marginHorizontal="12dp"
                 android:orientation="horizontal">
                 <LinearLayout
-                    android:id="@+id/rti55ulbl9xc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="28dp"
                     android:orientation="vertical">
                     <TextView
-                        android:id="@+id/rxsgyyk120f"
                         android:textColor="#1C1E1D"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -70,7 +67,6 @@
                         android:text="Name Location"
                         />
                     <TextView
-                        android:id="@+id/rc57nhjksnyc"
                         android:textColor="#757575"
                         android:textSize="16sp"
                         android:layout_height="wrap_content"
@@ -84,7 +80,7 @@
                     android:layout_weight="1"
                     />
                 <ImageView
-                    android:id="@+id/rnl6xgq6hcg"
+                    android:id="@+id/close_icon2"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="17dp"
@@ -92,8 +88,8 @@
                     android:scaleType="fitXY"
                     />
             </LinearLayout>
+
             <LinearLayout
-                android:id="@+id/rhrp9mba7t9e"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -103,13 +99,11 @@
                 android:layout_marginHorizontal="12dp"
                 android:orientation="horizontal">
                 <LinearLayout
-                    android:id="@+id/rldayl1ynkfd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="28dp"
                     android:orientation="vertical">
                     <TextView
-                        android:id="@+id/r891g5o78e5x"
                         android:textColor="#1C1E1D"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -119,7 +113,6 @@
                         android:text="Name Location"
                         />
                     <TextView
-                        android:id="@+id/rjhitruskige"
                         android:textColor="#757575"
                         android:textSize="16sp"
                         android:layout_height="wrap_content"
@@ -133,7 +126,7 @@
                     android:layout_weight="1"
                     />
                 <ImageView
-                    android:id="@+id/r02felovhv9mx"
+                    android:id="@+id/close_icon3"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="17dp"
@@ -142,7 +135,6 @@
                     />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/rfqq7z7qhxco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -152,13 +144,11 @@
                 android:layout_marginHorizontal="12dp"
                 android:orientation="horizontal">
                 <LinearLayout
-                    android:id="@+id/r94fjll5g3i"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="28dp"
                     android:orientation="vertical">
                     <TextView
-                        android:id="@+id/rhwmr3dijvd8"
                         android:textColor="#1C1E1D"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -168,7 +158,6 @@
                         android:text="Name Location"
                         />
                     <TextView
-                        android:id="@+id/rbfvy1ux2hjt"
                         android:textColor="#757575"
                         android:textSize="16sp"
                         android:layout_height="wrap_content"
@@ -182,7 +171,7 @@
                     android:layout_weight="1"
                     />
                 <ImageView
-                    android:id="@+id/rrt17t0ls7kp"
+                    android:id="@+id/close_icon4"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="17dp"
@@ -191,7 +180,6 @@
                     />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/rjlmbc8eds"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -201,13 +189,11 @@
                 android:layout_marginHorizontal="12dp"
                 android:orientation="horizontal">
                 <LinearLayout
-                    android:id="@+id/r88ubtvi50wh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="28dp"
                     android:orientation="vertical">
                     <TextView
-                        android:id="@+id/rxmct8vzlk6o"
                         android:textColor="#1C1E1D"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -231,7 +217,7 @@
                     android:layout_weight="1"
                     />
                 <ImageView
-                    android:id="@+id/rokyqxqlcf5p"
+                    android:id="@+id/close_icon5"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="17dp"
@@ -240,7 +226,6 @@
                     />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/r7h2v5osev0u"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -250,13 +235,11 @@
                 android:layout_marginHorizontal="12dp"
                 android:orientation="horizontal">
                 <LinearLayout
-                    android:id="@+id/r3600udv93ch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="28dp"
                     android:orientation="vertical">
                     <TextView
-                        android:id="@+id/r9dtxvwtgrjr"
                         android:textColor="#1C1E1D"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -266,7 +249,6 @@
                         android:text="Name Location"
                         />
                     <TextView
-                        android:id="@+id/rbdzu3k9n9lk"
                         android:textColor="#757575"
                         android:textSize="16sp"
                         android:layout_height="wrap_content"
@@ -279,14 +261,13 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     />
+
                 <ImageView
-                    android:id="@+id/rxiun7iwscmb"
+                    android:id="@+id/close_icon6"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="17dp"
-                    android:src="@drawable/alfian_x"
-                    android:scaleType="fitXY"
-                    />
+                    android:src="@drawable/alfian_x" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

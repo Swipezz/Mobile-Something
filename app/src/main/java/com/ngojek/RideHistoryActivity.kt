@@ -26,17 +26,17 @@ class RideHistoryActivity : AppCompatActivity() {
         }
 
 
-        val btnBack = findViewById<ImageView>(R.id.r3njbh0buxkn)
+        val btnBack = findViewById<ImageView>(R.id.icon_back)
 
         btnBack.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }
 
-        val close1 = findViewById<ImageView?>(R.id.rnl6xgq6hcg)
-        val close2 = findViewById<ImageView?>(R.id.r02felovhv9mx)
-        val close3 = findViewById<ImageView?>(R.id.rrt17t0ls7kp)
-        val close4 = findViewById<ImageView?>(R.id.rokyqxqlcf5p)
-        val close5 = findViewById<ImageView?>(R.id.rxiun7iwscmb)
+        val close1 = findViewById<ImageView?>(R.id.close_icon2)
+        val close2 = findViewById<ImageView?>(R.id.close_icon3)
+        val close3 = findViewById<ImageView?>(R.id.close_icon4)
+        val close4 = findViewById<ImageView?>(R.id.close_icon5)
+        val close5 = findViewById<ImageView?>(R.id.close_icon6)
 
         setCloseAction(close1, "Item 1")
         setCloseAction(close2, "Item 2")
