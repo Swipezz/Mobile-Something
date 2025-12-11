@@ -11,6 +11,9 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
+interface BottomNavCallback {
+    fun onHomeSelectedFromFragment()
+}
 
 class UserSettingFragment : Fragment() {
 
@@ -61,37 +64,34 @@ class UserSettingFragment : Fragment() {
         enableTapToEdit(danaNumber)
 
         iconBack.setOnClickListener {
-            goToHomeActivity()
+            goToHomeFragment()
         }
 
         btnSave.setOnClickListener {
             saveUserData()
             disableAll()
-            goToHomeActivity()
+            goToHomeFragment()
         }
 
         btnCancel.setOnClickListener {
             disableAll()
             Toast.makeText(context, "Perubahan dibatalkan.", Toast.LENGTH_SHORT).show()
-            goToHomeActivity()
+            goToHomeFragment()
         }
 
         btnHome.setOnClickListener {
-            goToHomeActivity()
+            goToHomeFragment()
         }
     }
 
-    private fun goToHomeActivity() {
-        val activity = requireActivity()
+    private fun goToHomeFragment() {
+        (activity as? BottomNavCallback)?.onHomeSelectedFromFragment()
 
-        val intent = Intent(activity, HomeActivity::class.java).apply {
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
-
-        startActivity(intent)
-        activity.finish()
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, HomeFragment())
+            .commit()
     }
+
 
 
     private fun setEditable(editText: EditText, enable: Boolean) {

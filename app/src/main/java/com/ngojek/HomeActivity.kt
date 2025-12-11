@@ -6,11 +6,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.google.android.material.card.MaterialCardView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment // Tambahkan Import ini
+import androidx.fragment.app.Fragment
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), BottomNavCallback {
 
-    // ID untuk FrameLayout di layout Anda yang akan menampung Fragment
     private val CONTAINER_ID = R.id.fragment_container
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,10 +24,16 @@ class HomeActivity : AppCompatActivity() {
         val btnProfile = findViewById<ImageView>(R.id.btn_profile)
         val btnMotor = findViewById<MaterialCardView>(R.id.btn_motor)
 
-        val openHistory = {
+        // Default fragment pertama (HomeFragment)
+        loadFragment(HomeFragment())
+
+        // ====================================
+        // BUTTON LISTENER
+        // ====================================
+
+        btnHistoryIcon.setOnClickListener {
             startActivity(Intent(this, RideHistoryActivity::class.java))
         }
-        btnHistoryIcon.setOnClickListener { openHistory() }
 
         btnMapIcon.setOnClickListener {
             startActivity(Intent(this, LocationPickActivity::class.java))
@@ -42,12 +47,14 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, BookingActivity::class.java))
         }
 
+        // ===== HOME FRAGMENT =====
         btnHome.setOnClickListener {
-            // Ketika tombol home diklik, pastikan kembali ke tampilan utama (misalnya HomeFragment)
-            // Jika HomeActivity hanya menampilkan HomeFragment, tidak perlu navigasi di sini.
+            loadFragment(HomeFragment())
+            btnHome.setImageResource(R.drawable.alfian_rumah_main_biru)
+            btnProfile.setImageResource(R.drawable.alfian_wong_main)
         }
 
-        // PERUBAHAN UTAMA: Memuat Fragment saat btnProfile diklik
+        // ===== PROFILE FRAGMENT =====
         btnProfile.setOnClickListener {
             loadFragment(UserSettingFragment())
             btnHome.setImageResource(R.drawable.alfian_rumah_main)
@@ -55,13 +62,17 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    override fun onHomeSelectedFromFragment() {
+        val btnHome = findViewById<ImageView>(R.id.btn_home)
+        val btnProfile = findViewById<ImageView>(R.id.btn_profile)
 
-      //Fungsi untuk mengganti (replace) Fragment di container
+        btnHome.setImageResource(R.drawable.alfian_rumah_main_biru)
+        btnProfile.setImageResource(R.drawable.alfian_wong_main)
+    }
 
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(CONTAINER_ID, fragment)
-            .addToBackStack("user_settings") // Tag untuk back stack
             .commit()
     }
 }

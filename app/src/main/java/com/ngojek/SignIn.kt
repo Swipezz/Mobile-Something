@@ -62,7 +62,7 @@ class SignIn : Fragment() {
             }
 
             // Sample Valid User
-            if (email == "admin@gmail.com" && password == "admin123") {
+            if (email == "admin@gmail.com" && password == "admin") {
                 Toast.makeText(requireContext(), "Login Berhasil", Toast.LENGTH_SHORT).show()
 
                 // Pindah ke HomeActivity
