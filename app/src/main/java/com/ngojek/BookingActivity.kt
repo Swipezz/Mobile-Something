@@ -1,19 +1,16 @@
 package com.ngojek
+
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ngojek.LocationAdapter
 
 class BookingActivity : AppCompatActivity() {
 
-    private val savedLocations = mutableListOf<String>()
+    // 1. Ubah List untuk menyimpan TripHistory, bukan String lagi
+    private val savedTrips = mutableListOf<TripHistory>()
     private lateinit var adapter: LocationAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,56 +18,72 @@ class BookingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_booking)
         supportActionBar?.hide()
 
+        val etOrigin = findViewById<EditText>(R.id.etOrigin)
         val etDest = findViewById<EditText>(R.id.etDest)
-        val btnAddDest = findViewById<LinearLayout>(R.id.layoutActions).getChildAt(1)
         val rvLocations = findViewById<RecyclerView>(R.id.rvLocations)
 
+        // 2. Setup Adapter
+        // Callback sekarang menerima satu paket trip (origin & dest)
+        adapter = LocationAdapter(savedTrips) { selectedTrip ->
+            // Saat item riwayat diklik, ISIKAN KEDUA KOLOM SEKALIGUS
+            etOrigin.setText(selectedTrip.origin)
+            etDest.setText(selectedTrip.destination)
 
-        adapter = LocationAdapter(savedLocations) { selectedLocation ->
-            etDest.setText(selectedLocation)
-            Toast.makeText(this, "Lokasi terpilih: $selectedLocation", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Rute terpilih: ${selectedTrip.origin} -> ${selectedTrip.destination}", Toast.LENGTH_SHORT).show()
         }
 
         rvLocations.layoutManager = LinearLayoutManager(this)
         rvLocations.adapter = adapter
 
-
-        val btnAdd = findViewById<LinearLayout>(R.id.layoutActions)
+        // 3. Logika Simpan (Add a destination)
         val layoutActions = findViewById<LinearLayout>(R.id.layoutActions)
         val btnAddAction = layoutActions.getChildAt(1) // Tombol "Add a destination"
 
         btnAddAction.setOnClickListener {
-            val textBaru = etDest.text.toString()
+            val textOrigin = etOrigin.text.toString()
+            val textDest = etDest.text.toString()
 
-            if (textBaru.isNotEmpty()) {
-                savedLocations.add(textBaru)
+            // Validasi: Pastikan minimal salah satu terisi (atau keduanya, sesuai kebutuhanmu)
+            if (textOrigin.isNotEmpty() || textDest.isNotEmpty()) {
 
-                adapter.notifyItemInserted(savedLocations.size - 1)
+                // BUAT PAKET: Gabungkan origin dan dest dalam satu objek
+                val newTrip = TripHistory(
+                    origin = textOrigin,
+                    destination = textDest
+                )
 
+                // Simpan paket tersebut ke list
+                savedTrips.add(newTrip)
+                adapter.notifyItemInserted(savedTrips.size - 1)
+
+                // Bersihkan input setelah simpan
+                etOrigin.setText("")
                 etDest.setText("")
-                Toast.makeText(this, "Lokasi disimpan!", Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(this, "Rute berhasil disimpan!", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Isi lokasi dulu ya", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Isi lokasi dulu ya sebelum disimpan", Toast.LENGTH_SHORT).show()
             }
         }
-        val btnSelectMap = findViewById<LinearLayout>(R.id.btnSelectMap)
 
+        // ... Sisa kode lainnya (Tombol Map, Close, Continue) tetap sama ...
+        val btnSelectMap = findViewById<LinearLayout>(R.id.btnSelectMap)
         btnSelectMap.setOnClickListener {
             val intent = Intent(this, LocationPickActivity::class.java)
             startActivity(intent)
         }
 
         val btnClose = findViewById<ImageView>(R.id.btnClose)
-        btnClose.setOnClickListener {
-            finish()
-        }
+        btnClose.setOnClickListener { finish() }
 
         val btnContinue = findViewById<Button>(R.id.btnContinueBooking)
-
         btnContinue.setOnClickListener {
-
-            val intent = Intent(this, OrderActivity::class.java)
-            startActivity(intent)
+            if (etOrigin.text.isNotEmpty() && etDest.text.isNotEmpty()) {
+                val intent = Intent(this, OrderActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Mohon isi lokasi jemput & tujuan", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

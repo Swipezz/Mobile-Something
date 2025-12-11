@@ -49,13 +49,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvCurrentLoc"
+        <EditText
+            android:id="@+id/etOrigin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="Your current location"
-            android:textColor="@color/gray_text"
+            android:background="@android:color/transparent"
+            android:hint="Lokasi Jemput"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_text"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@id/iconStart"
             app:layout_constraintEnd_toEndOf="parent"
@@ -97,9 +102,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:background="@android:color/transparent"
-            android:hint="Search for a destination"
+            android:hint="Lokasi Tujuan"
             android:inputType="text"
             android:maxLines="1"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textColorHint="@color/gray_text"
             android:textSize="14sp"
@@ -109,7 +115,6 @@
             app:layout_constraintTop_toTopOf="@id/iconDest" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <LinearLayout
         android:id="@+id/layoutActions"
         android:layout_width="match_parent"
@@ -157,7 +162,6 @@
                 android:layout_height="16dp"
                 android:src="@drawable/hafid_plus_oren"
                 app:tint="@color/orange_accent"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

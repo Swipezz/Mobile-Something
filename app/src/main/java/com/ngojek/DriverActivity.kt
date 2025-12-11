@@ -11,7 +11,7 @@ class DriverActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_driver_location) // Pastikan nama layout XML sesuai
+        setContentView(R.layout.activity_driver_location)
         supportActionBar?.hide()
 
         Toast.makeText(this, "Simulasi perjalanan dimulai... (Tunggu 10 detik)", Toast.LENGTH_LONG).show()
