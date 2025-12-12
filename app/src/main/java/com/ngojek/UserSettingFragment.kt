@@ -95,7 +95,7 @@ class UserSettingFragment : Fragment() {
         iconProfile = view.findViewById(R.id.btn_profile)
 
         // Memanggil fungsi loadUserData() untuk mengambil data pengguna yang sudah disimpan
-        // (biasanya dari SharedPreferences) dan menampilkannya pada EditText atau TextView
+        // dari SharedPreferences dan menampilkannya pada EditText atau TextView
         loadUserData()
 
         //Memanggil fungsi enableTapToEdit() agar dapat Mengaktifkan fitur klik untuk setiap input supaya bisa diedit
@@ -178,7 +178,11 @@ class UserSettingFragment : Fragment() {
         setEditable(danaName, false)
     }
 
+    //mengambil nilai (text) yang dimasukkan pengguna ke dalam masing-masing EditText dan
+    // menyimpannya ke dalam variabel lokal untuk diproses lebih lanjut
     private fun saveUserData() {
+        //.text digunakan untuk mengambil atau mengubah teks yang ada di dalamnya
+        //.toString() digunakan untuk mengubah tipe data dari Editable menjadi String
         val newFullName = fullName.text.toString()
         val newEmail = email.text.toString()
         val newPhone = phone.text.toString()
@@ -187,13 +191,15 @@ class UserSettingFragment : Fragment() {
         val newDanaNumber = danaNumber.text.toString()
         val newDanaName = danaName.text.toString()
 
-        // Validasi
+        // Validasi input bahawa nama tiadak boleh kosong
+        // Jika kosong, menammpilkan pesan kesalahan
         if (newFullName.isBlank()) {
             Toast.makeText(context, "Nama lengkap tidak boleh kosong.", Toast.LENGTH_SHORT).show()
             return
         }
 
         // Simpan ke SharedPreferences
+        // Membuat editor untuk SharedPreferences agar bisa menulis data
         val editor = sharedPreferences.edit()
         editor.putString(KEY_FULL_NAME, newFullName)
         editor.putString(KEY_EMAIL, newEmail)
@@ -202,13 +208,16 @@ class UserSettingFragment : Fragment() {
         editor.putString(KEY_CARD_NAME, newCardName)
         editor.putString(KEY_DANA_NUMBER, newDanaNumber)
         editor.putString(KEY_DANA_NAME, newDanaName)
+        //Menyimpan perubahan secara asynchronous
         editor.apply()
 
+        //Menampilakan pesan singkat bahwa data berhasil disimpan
         Toast.makeText(context, "Pengaturan berhasil diperbarui!", Toast.LENGTH_LONG).show()
     }
-    
+
+    //LoadUserData dari SharedPreferences
     private fun loadUserData() {
-        // Load data dari SharedPreferences
+        // LoadUserData memastikan data pengguna yang pernah disimpan sebelumnya otomatis muncul di form
         fullName.setText(sharedPreferences.getString(KEY_FULL_NAME, "Adam Noverian"))
         email.setText(sharedPreferences.getString(KEY_EMAIL, "adamnoverian@gmail.com"))
         phone.setText(sharedPreferences.getString(KEY_PHONE, "856 1234 1234"))
