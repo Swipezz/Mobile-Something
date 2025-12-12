@@ -19,6 +19,9 @@ interface BottomNavCallback {
 
 class UserSettingFragment : Fragment() {
 
+    //deklarasi variable yang akan digunakan di dalam fragment
+    //private :hanya bisa diakses di dalam class ini
+    //lateinit :variabel yang akan diinisasi
     private lateinit var iconBack: ImageView
     private lateinit var fullName: EditText
     private lateinit var email: EditText
@@ -32,10 +35,15 @@ class UserSettingFragment : Fragment() {
     private lateinit var btnCancel: LinearLayout
     private lateinit var btnHome: ImageView
     private lateinit var iconProfile: ImageView
-    
+
+    //Ini adalah wadah penyimpanan data lokal
+    //Digunakan untuk menyimpan: nama, email, nomor hp, dan nomor kartu
+    //SharedPreferences :penyimpanan kecil yang tidak akan hilang meskipun aplikasi ditutup
     private lateinit var sharedPreferences: SharedPreferences
-    
+
+    //Ini membuka blok companion object—bagian khusus untuk menyimpan nilai tetap (konstanta)
     companion object {
+        //Ini digunakan sebagai “nama variabel” untuk menyimpan data ke SharedPreferences.
         private const val PREF_NAME = "UserSettings"
         private const val KEY_FULL_NAME = "fullName"
         private const val KEY_EMAIL = "email"
@@ -46,19 +54,30 @@ class UserSettingFragment : Fragment() {
         private const val KEY_DANA_NAME = "danaName"
     }
 
+    //untuk mengganti implemaentasi fungsi onCreateView() bawaan dari Fragment
     override fun onCreateView(
+        //Parameter Fungsi
+        // inflater: LayoutInflater-> Objek yang bertugas “mengembangkan/membaca”
+        // file XML layout dan mengubahnya menjadi objek View yang bisa ditampilkan
+        // container: ViewGroup?->Parent layout tempat fragment akan ditempel
+        // savedInstanceState: Bundle?-> Data yang disimpan jika fragment pernah dibuat ulang
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //Fragment akan menampilkan layout dari file user_setting.xml
         return inflater.inflate(R.layout.user_setting, container, false)
     }
 
+    //overide fun diguanakan ketika menggantifungsi yang sudah ada di kelas induk
+    //onViewCreated() -> layout sudah jadi, siap dipakai
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //Memanggil versi bawaan (default) dari fungsi onViewCreated milik kelas Fragment
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize SharedPreferences
+        // Inisiasi SharedPreferences
         sharedPreferences = requireActivity().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
+        //mengambil (menghubungkan) komponen-komponen UI dari layout XML ke dalam file Kotlin
         iconBack = view.findViewById(R.id.icon_back)
 
         fullName = view.findViewById(R.id.full_name)
@@ -74,10 +93,12 @@ class UserSettingFragment : Fragment() {
 
         btnHome = view.findViewById(R.id.btn_home_setting)
         iconProfile = view.findViewById(R.id.btn_profile)
-        
-        // Load saved data
+
+        // Memanggil fungsi loadUserData() untuk mengambil data pengguna yang sudah disimpan
+        // (biasanya dari SharedPreferences) dan menampilkannya pada EditText atau TextView
         loadUserData()
 
+        //Memanggil fungsi enableTapToEdit() agar dapat Mengaktifkan fitur klik untuk setiap input supaya bisa diedit
         enableTapToEdit(fullName)
         enableTapToEdit(email)
         enableTapToEdit(phone)
@@ -86,6 +107,7 @@ class UserSettingFragment : Fragment() {
         enableTapToEdit(danaNumber)
         enableTapToEdit(danaName)
 
+        //listener untuk tombol-tombol di fragment UserSettingFragment, maksudnya setiap tombol ketika diklik akan melakukan aksi
         iconBack.setOnClickListener {
             goToHomeFragment()
         }
@@ -107,31 +129,36 @@ class UserSettingFragment : Fragment() {
         }
     }
 
+
+    //memberitahu activity bahwa fragment ingin kembali ke Home, supaya bottom navigation diperbarui
     private fun goToHomeFragment() {
         (activity as? BottomNavCallback)?.onHomeSelectedFromFragment()
         
         // Hide fragment container saat kembali ke home
         val fragmentContainer = requireActivity().findViewById<View>(R.id.fragment_container)
+        //
+        //visibility = View.GONE ->menyembunyikan view fragment container, sehingga konten fragment tidak terlihat
+        //bertujuan untuk saat kembali ke home fragment container fragment disembunyikan agar tampilan home lebih bersih
         fragmentContainer?.visibility = View.GONE
-
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, HomeFragment())
             .commit()
     }
 
 
-
+    //Fungsi ini memudahkan untuk mengaktifkan atau menonaktifkan kemampuan edit pada EditText
     private fun setEditable(editText: EditText, enable: Boolean) {
         editText.isFocusable = enable
         editText.isFocusableInTouchMode = enable
         editText.isCursorVisible = enable
     }
 
+    //Awalnya EditText tidak bisa diketik, tapi bisa diklik.
     private fun enableTapToEdit(editText: EditText) {
         editText.isFocusable = false
         editText.isFocusableInTouchMode = false
         editText.isCursorVisible = false
-
+    //Saat diklik baru bisa editable
         editText.setOnClickListener {
             editText.isFocusable = true
             editText.isFocusableInTouchMode = true
@@ -140,6 +167,7 @@ class UserSettingFragment : Fragment() {
         }
     }
 
+    //Mengunci semua kolom setelah save / cancel.
     private fun disableAll() {
         setEditable(fullName, false)
         setEditable(email, false)
