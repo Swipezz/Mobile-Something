@@ -51,7 +51,7 @@ class SignIn : Fragment() {
             inputPassword.setSelection(inputPassword.text.length)
         }
 
-        // ------------------ Login Button ------------------
+        // Login Button
         btnLogin.setOnClickListener {
             val email = inputEmail.text.toString()
             val password = inputPassword.text.toString()

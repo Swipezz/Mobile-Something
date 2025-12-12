@@ -17,17 +17,24 @@ class LocationPickActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Membuat UI tampil fullscreen
         enableEdgeToEdge()
+        //Menghubungkan Activity dengan layout pick_location.xml
         setContentView(R.layout.pick_location)
 
+        //Mengambil root view dari layout utama Activity
         val root: View = findViewById(android.R.id.content)
 
+        //Listener untuk menyesuaikan UI terhadap sistem bar
         ViewCompat.setOnApplyWindowInsetsListener(root) { v, insets ->
+            //Mengambil ukuran status bar + navigation bar
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            //Memberi padding otomatis agar UI tidak tertutup status bar
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
+        //Ambil elemen UI berdasarkan ID yang ada di xml
         val btnSearchContainer = findViewById<LinearLayout>(R.id.btn_search_destination)
         val etSearch = findViewById<EditText>(R.id.et_search)
         val btnSearch = findViewById<ImageView>(R.id.btn_search)
@@ -50,6 +57,7 @@ class LocationPickActivity : AppCompatActivity() {
         btnConfirm.setOnClickListener {
             Toast.makeText(this, "Lokasi dikonfirmasi", Toast.LENGTH_SHORT).show()
 
+            //Pindah ke halaman OrderActivity
  startActivity(Intent(this, OrderActivity::class.java))
         }
     }
