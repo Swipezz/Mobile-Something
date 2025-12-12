@@ -37,11 +37,20 @@ class HomeActivity : AppCompatActivity(), BottomNavCallback {
         val layoutMieAyam = findViewById<LinearLayout>(R.id.item_mie_ayam)
         val layoutMasJo = findViewById<LinearLayout>(R.id.item_mas_jo)
         val layoutKwarcap = findViewById<LinearLayout>(R.id.item_kwarcap)
+        val layoutPnm = findViewById<LinearLayout>(R.id.item_pnm)
+        val layoutAston = findViewById<LinearLayout>(R.id.item_aston)
+        val layoutStasiun = findViewById<LinearLayout>(R.id.item_stasiun)
+
+
 
         val destinationList = listOf(
             DestinationItem("Mie ayam", layoutMieAyam),
             DestinationItem("Mas Jo", layoutMasJo),
-            DestinationItem("Kwarcap", layoutKwarcap)
+            DestinationItem("Kwarcap", layoutKwarcap),
+            DestinationItem("Kampus 1 Poltek Madiun", layoutPnm),
+            DestinationItem("Mall Aston", layoutAston),
+            DestinationItem("Stasiun Kota Baru", layoutStasiun)
+
         )
 
         // Default load HomeFragment

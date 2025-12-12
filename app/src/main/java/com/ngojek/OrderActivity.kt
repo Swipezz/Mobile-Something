@@ -2,10 +2,7 @@ package com.ngojek
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 class OrderActivity : AppCompatActivity() {
@@ -17,29 +14,48 @@ class OrderActivity : AppCompatActivity() {
         val btnClose = findViewById<ImageView>(R.id.btnClose)
         btnClose.setOnClickListener { finish() }
 
-        // 1. Inisialisasi Input Pembayaran
-        // DEMO NOTE: "Sistem menyediakan opsi pembayaran yang dinamis (via Spinner/Dropdown)."
+        // =========================================================================
+        // DEMO HIGHLIGHT 1: MENERIMA DATA ANTAR ACTIVITY (INTENT)
+        // =========================================================================
+
+        // Jelaskan: "Di sini logic penerimaan data bekerja. Saat Activity ini dibuat,
+        // sistem langsung membongkar 'paket' (Intent) yang dikirim dari BookingActivity."
+        val originName = intent.getStringExtra("EXTRA_ORIGIN")
+        val destinationName = intent.getStringExtra("EXTRA_DESTINATION")
+
+        // Inisialisasi TextView untuk judul lokasi
+        val tvOrigin = findViewById<TextView>(R.id.tvOriginTitle)
+        val tvDest = findViewById<TextView>(R.id.tvDestTitle)
+
+        // Jelaskan: "Data yang diterima langsung kita tampilkan ke UI.
+        // Penggunaan operator '?:' (Elvis Operator) adalah safety logic:
+        // jika data null/error, aplikasi tidak crash melainkan menampilkan teks default."
+        tvOrigin.text = originName ?: "Lokasi Jemput"
+        tvDest.text = destinationName ?: "Lokasi Tujuan"
+
+        // =========================================================================
+        // DEMO HIGHLIGHT 2: LOGIC PEMBAYARAN (BUSINESS LOGIC)
+        // =========================================================================
+
         val spinnerEwallet = findViewById<Spinner>(R.id.spinnerEwallet)
         val spinnerBank = findViewById<Spinner>(R.id.spinnerBank)
-
         val btnContinueOrder = findViewById<Button>(R.id.btnContinueOrder)
 
-        // 2. LOGIKA INTI: Validasi Transaksi
         btnContinueOrder.setOnClickListener {
-            // Mengambil nilai string yang sedang dipilih user
+            // Mengambil status pilihan user saat ini
             val selectedWallet = spinnerEwallet.selectedItem.toString()
             val selectedBank = spinnerBank.selectedItem.toString()
 
-            // DEMO HIGHLIGHT: VALIDASI PEMBAYARAN
-            // Jelaskan: "Ini logic krusial, Pak/Bu. Sistem akan MEMBLOKIR order jika
-            // user belum memilih metode pembayaran sama sekali (masih default).
-            // Tujuannya untuk mencegah error transaksi null di backend."
+            // Jelaskan: "Ini adalah 'Gatekeeper Logic'. Sistem memvalidasi apakah user
+            // sudah memilih metode pembayaran. Jika user membiarkan keduanya dalam posisi default
+            // (Pilih E-Wallet/Pilih Bank), sistem akan MENOLAK pesanan."
             if (selectedWallet == "Pilih E-Wallet..." && selectedBank == "Pilih Bank...") {
-                // Feedback error ke user
+  
+                // Feedback Error ke User
                 Toast.makeText(this, "Pilih metode pembayaran dulu", Toast.LENGTH_SHORT).show()
-            } else {
 
-                // DEMO NOTE: "Jika validasi lolos, barulah sistem menghubungkan ke Driver."
+            } else {
+                // Jelaskan: "Jika validasi lolos, barulah kita panggil DriverActivity."
                 val intent = Intent(this, DriverActivity::class.java)
                 startActivity(intent)
             }

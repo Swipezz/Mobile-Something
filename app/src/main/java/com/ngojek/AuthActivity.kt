@@ -3,7 +3,7 @@ package com.ngojek
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-// DEMO NOTE: Jelaskan bahwa Activity ini adalah "Parent" atau wadah utama
+// DEMO NOTE: Activity ini adalah "Parent" atau wadah utama
 // yang menampung alur otentikasi (Login & Register).
 class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

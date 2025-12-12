@@ -30,7 +30,7 @@ class BookingActivity : AppCompatActivity() {
         }
 
 // 1. Setup Adapter & Logic Klik Item
-        // DEMO NOTE: "Ini fitur UX penting: Saat user mengklik salah satu item di history,
+        // DEMO NOTE: "Saat user mengklik salah satu item di history,
         // aplikasi otomatis mengisi KEDUA kolom (Jemput & Tujuan) sekaligus."
         adapter = LocationAdapter(savedTrips) { selectedTrip ->
             // Saat item riwayat diklik, ISIKAN KEDUA KOLOM SEKALIGUS
@@ -92,6 +92,10 @@ class BookingActivity : AppCompatActivity() {
             // kalau lokasi jemput atau tujuan masih kosong."
             if (etOrigin.text.isNotEmpty() && etDest.text.isNotEmpty()) {
                 val intent = Intent(this, OrderActivity::class.java)
+
+                intent.putExtra("EXTRA_ORIGIN", etOrigin.text.toString())
+                intent.putExtra("EXTRA_DESTINATION", etDest.text.toString())
+
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Mohon isi lokasi jemput & tujuan", Toast.LENGTH_SHORT).show()
