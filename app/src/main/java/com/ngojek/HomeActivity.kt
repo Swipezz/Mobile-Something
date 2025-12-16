@@ -12,52 +12,101 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.card.MaterialCardView
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.TextView
+
+
+data class RecentTrip(
+    val name: String,
+    val address: String
+)
+
+class DestinationAdapter(
+    private val allItems: List<RecentTrip>,
+    private val onClick: (RecentTrip) -> Unit
+) : RecyclerView.Adapter<DestinationAdapter.ViewHolder>() {
+
+    private var filteredItems: List<RecentTrip> = allItems
+
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val title = view.findViewById<TextView>(R.id.tvLocationName)
+
+        init {
+            view.setOnClickListener {
+                onClick(filteredItems[adapterPosition])
+            }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_saved_location, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.title.text = filteredItems[position].name
+    }
+
+    override fun getItemCount() = filteredItems.size
+
+    fun filter(query: String) {
+        filteredItems = if (query.isBlank()) {
+            allItems
+        } else {
+            allItems.filter {
+                it.name.contains(query, ignoreCase = true)
+            }
+        }
+        notifyDataSetChanged()
+    }
+}
+
 
 class HomeActivity : AppCompatActivity(), BottomNavCallback {
 
-    private val CONTAINER_ID = R.id.fragment_container
+    private lateinit var adapter: DestinationAdapter
+    private lateinit var allDestinations: List<RecentTrip>
 
-    data class DestinationItem(val name: String, val layout: View)
-
-    @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // ---------- INIT UI ----------
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.bottom_bar, NavBar())
+                .commit()
+            loadFragment(HomeFragment())
+        }
+
+        val rv = findViewById<RecyclerView>(R.id.recentLocation)
+        val etSearch = findViewById<EditText>(R.id.text_search_placeholder)
         val btnMapIcon = findViewById<ImageView>(R.id.img_map_preview)
         val btnHistoryIcon = findViewById<ImageView>(R.id.btn_history_icon)
         val btnSearchLayout = findViewById<LinearLayout>(R.id.btn_search_destination)
-        val etSearch = findViewById<EditText>(R.id.text_search_placeholder)
 
-        val btnHome = findViewById<ImageView>(R.id.btn_home)
-        val btnProfile = findViewById<ImageView>(R.id.btn_profile)
-        val btnMotor = findViewById<MaterialCardView>(R.id.btn_motor)
+        // DATA
+        allDestinations = loadRecentTrips()
 
-        val layoutMieAyam = findViewById<LinearLayout>(R.id.item_mie_ayam)
-        val layoutMasJo = findViewById<LinearLayout>(R.id.item_mas_jo)
-        val layoutKwarcap = findViewById<LinearLayout>(R.id.item_kwarcap)
-        val layoutPnm = findViewById<LinearLayout>(R.id.item_pnm)
-        val layoutAston = findViewById<LinearLayout>(R.id.item_aston)
-        val layoutStasiun = findViewById<LinearLayout>(R.id.item_stasiun)
+        adapter = DestinationAdapter(allDestinations) {
+            navigateToBooking(it.address)
+        }
 
+        rv.layoutManager = LinearLayoutManager(this)
+        rv.adapter = adapter
 
+        // SEARCH
+        etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                adapter.filter(s.toString().lowercase())
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
 
-        val destinationList = listOf(
-            DestinationItem("Mie ayam", layoutMieAyam),
-            DestinationItem("Mas Jo", layoutMasJo),
-            DestinationItem("Kwarcap", layoutKwarcap),
-            DestinationItem("Kampus 1 Poltek Madiun", layoutPnm),
-            DestinationItem("Mall Aston", layoutAston),
-            DestinationItem("Stasiun Kota Baru", layoutStasiun)
-
-        )
-
-        // Default load HomeFragment
-        loadFragment(HomeFragment())
-        btnHome.setImageResource(R.drawable.alfian_rumah_main_biru)
-
-        // ---------- BUTTON NAVIGATION ----------
         btnHistoryIcon.setOnClickListener {
             startActivity(Intent(this, RideHistoryActivity::class.java))
         }
@@ -66,86 +115,54 @@ class HomeActivity : AppCompatActivity(), BottomNavCallback {
             startActivity(Intent(this, LocationPickActivity::class.java))
         }
 
-        btnMotor.setOnClickListener {
-            startActivity(Intent(this, BookingActivity::class.java))
-        }
-
         btnSearchLayout.setOnClickListener {
             startActivity(Intent(this, BookingActivity::class.java))
         }
-
-        // HOME
-        btnHome.setOnClickListener {
-            loadFragment(HomeFragment())
-            btnHome.setImageResource(R.drawable.alfian_rumah_main_biru)
-            btnProfile.setImageResource(R.drawable.alfian_wong_main)
-        }
-
-        // PROFILE → menggunakan Fragment
-        btnProfile.setOnClickListener {
-            loadFragment(UserSettingFragment())
-            btnHome.setImageResource(R.drawable.alfian_rumah_main)
-            btnProfile.setImageResource(R.drawable.alfian_wong_main_biru)
-        }
-
-        // ---------- REALTIME SEARCH ----------
-        etSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val query = s.toString().lowercase().trim()
-                filterDestinations(query, destinationList)
-            }
-
-            override fun afterTextChanged(s: Editable?) {}
-        })
-
-        // ---------- DESTINATION CLICK ----------
-        layoutMieAyam.setOnClickListener { navigateToBooking("Belakang sleko") }
-        layoutMasJo.setOnClickListener { navigateToBooking("Jl manyar no 5") }
-        layoutKwarcap.setOnClickListener { navigateToBooking("Depan poltek") }
     }
 
-    // FILTER ITEM
-    private fun filterDestinations(query: String, list: List<DestinationItem>) {
-        for (item in list) {
-            item.layout.visibility =
-                if (item.name.lowercase().contains(query)) View.VISIBLE else View.GONE
-        }
-    }
-
-    private fun navigateToBooking(destinationName: String) {
+    private fun navigateToBooking(destination: String) {
         val intent = Intent(this, BookingActivity::class.java)
-        intent.putExtra("DESTINATION_NAME", destinationName)
+        intent.putExtra("DESTINATION_NAME", destination)
         startActivity(intent)
     }
 
-    // ---------- LOAD FRAGMENT ----------
     private fun loadFragment(fragment: Fragment, addToBackStack: Boolean = false) {
-        val fragmentContainer = findViewById<View>(R.id.fragment_container)
-        
-        // Show container untuk fragment selain HomeFragment
-        // Hide container untuk HomeFragment (supaya konten home terlihat)
-        if (fragment is HomeFragment) {
-            fragmentContainer.visibility = View.GONE
-        } else {
-            fragmentContainer.visibility = View.VISIBLE
-        }
-        
-        val transaction = supportFragmentManager.beginTransaction()
-            .replace(CONTAINER_ID, fragment)
+        val container = findViewById<View>(R.id.fragment_container)
+        container.visibility = if (fragment is HomeFragment) View.GONE else View.VISIBLE
 
-        if (addToBackStack) transaction.addToBackStack("user_settings")
+        val tx = supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
 
-        transaction.commit()
+        if (addToBackStack) tx.addToBackStack(null)
+        tx.commit()
     }
 
-    // Dipanggil dari UserSettingFragment ketika tombol Home ditekan
-    override fun onHomeSelectedFromFragment() {
-        val btnHome = findViewById<ImageView>(R.id.btn_home)
-        val btnProfile = findViewById<ImageView>(R.id.btn_profile)
+    private fun loadRecentTrips(): List<RecentTrip> {
+        val prefs = getSharedPreferences("recent_trips", MODE_PRIVATE)
+        val set = prefs.getStringSet("trips", emptySet()) ?: emptySet()
 
-        btnHome.setImageResource(R.drawable.alfian_rumah_main_biru)
-        btnProfile.setImageResource(R.drawable.alfian_wong_main)
+        return set.map {
+            val split = it.split("|")
+            RecentTrip(
+                name = split.getOrNull(0) ?: "",
+                address = split.getOrNull(1) ?: ""
+            )
+        }.reversed()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapter = DestinationAdapter(loadRecentTrips()) {
+            navigateToBooking(it.address)
+        }
+        findViewById<RecyclerView>(R.id.recentLocation).adapter = adapter
+    }
+
+
+    override fun onHomeSelected() = loadFragment(HomeFragment())
+    override fun onProfileSelected() = loadFragment(UserSettingFragment(), true)
+    override fun onMotorSelected() {
+        startActivity(Intent(this, BookingActivity::class.java))
     }
 }
+

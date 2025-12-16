@@ -9,6 +9,17 @@ import androidx.recyclerview.widget.RecyclerView
 
 class BookingActivity : AppCompatActivity() {
 
+    private fun saveRecentTrip(origin: String, destination: String) {
+        val prefs = getSharedPreferences("recent_trips", MODE_PRIVATE)
+        val editor = prefs.edit()
+
+        val current = prefs.getStringSet("trips", mutableSetOf()) ?: mutableSetOf()
+        current.add("$origin|$destination")
+
+        editor.putStringSet("trips", current)
+        editor.apply()
+    }
+
     // DEMO NOTE: "Disini kita menggunakan List of TripHistory (bukan String biasa),
     // tujuannya agar bisa menyimpan SEPASANG data: Lokasi Jemput & Tujuan dalam satu riwayat."
     private val savedTrips = mutableListOf<TripHistory>()
@@ -62,6 +73,8 @@ class BookingActivity : AppCompatActivity() {
                 )
 
                 // Simpan paket tersebut ke list
+                saveRecentTrip(textOrigin, textDest)
+
                 savedTrips.add(newTrip)
                 adapter.notifyItemInserted(savedTrips.size - 1)
 

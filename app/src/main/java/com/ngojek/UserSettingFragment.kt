@@ -13,10 +13,6 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
-interface BottomNavCallback {
-    fun onHomeSelectedFromFragment()
-}
-
 class UserSettingFragment : Fragment() {
 
     //deklarasi variable yang akan digunakan di dalam fragment
@@ -91,7 +87,6 @@ class UserSettingFragment : Fragment() {
         btnSave = view.findViewById(R.id.outline_save)
         btnCancel = view.findViewById(R.id.outline_cancel)
 
-        btnHome = view.findViewById(R.id.btn_home_setting)
         iconProfile = view.findViewById(R.id.btn_profile)
 
         // Memanggil fungsi loadUserData() untuk mengambil data pengguna yang sudah disimpan
@@ -128,23 +123,6 @@ class UserSettingFragment : Fragment() {
             goToHomeFragment()
         }
     }
-
-
-    //memberitahu activity bahwa fragment ingin kembali ke Home, supaya bottom navigation diperbarui
-    private fun goToHomeFragment() {
-        (activity as? BottomNavCallback)?.onHomeSelectedFromFragment()
-        
-        // Hide fragment container saat kembali ke home
-        val fragmentContainer = requireActivity().findViewById<View>(R.id.fragment_container)
-        //
-        //visibility = View.GONE ->menyembunyikan view fragment container, sehingga konten fragment tidak terlihat
-        //bertujuan untuk saat kembali ke home fragment container fragment disembunyikan agar tampilan home lebih bersih
-        fragmentContainer?.visibility = View.GONE
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, HomeFragment())
-            .commit()
-    }
-
 
     //Fungsi ini memudahkan untuk mengaktifkan atau menonaktifkan kemampuan edit pada EditText
     private fun setEditable(editText: EditText, enable: Boolean) {
@@ -225,5 +203,9 @@ class UserSettingFragment : Fragment() {
         cardName.setText(sharedPreferences.getString(KEY_CARD_NAME, "Adam Noverian"))
         danaNumber.setText(sharedPreferences.getString(KEY_DANA_NUMBER, "0856 1234 1234"))
         danaName.setText(sharedPreferences.getString(KEY_DANA_NAME, "Adam Noverian"))
+    }
+
+    private fun goToHomeFragment() {
+        (activity as? BottomNavCallback)?.onHomeSelected()
     }
 }

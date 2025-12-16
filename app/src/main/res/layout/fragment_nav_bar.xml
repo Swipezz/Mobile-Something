@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/bottom_bar"
+    android:layout_gravity="bottom"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".NavBar">
+
+    <!-- Background bottom bar -->
+    <View
+        android:id="@+id/bottom_bar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        android:elevation="8dp" />
+
+    <!-- Button Home (kiri) -->
+    <ImageView
+        android:id="@+id/btn_home"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/alfian_rumah_main_biru"
+        android:elevation="30dp" />
+
+    <!-- Button Profile (kanan) -->
+    <ImageView
+        android:id="@+id/btn_profile"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/alfian_wong_main"
+        android:elevation="8dp" />
+
+    <!-- Button tengah (floating) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btn_motor"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="36dp"
+        app:cardElevation="10dp">
+
+        <ImageView
+            android:id="@+id/icon_motor"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:src="@drawable/alfian_motor_biru" />
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>

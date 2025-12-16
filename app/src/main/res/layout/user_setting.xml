@@ -572,67 +572,10 @@
                 android:orientation="vertical">
 
             </LinearLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <FrameLayout
+                android:id="@+id/bottom_bar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-                <View
-                    android:id="@+id/bottom_bar_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:background="@android:color/white"
-                    android:elevation="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <ImageView
-                    android:id="@+id/btn_home_setting"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/alfian_rumah_main"
-                    android:elevation="8dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/center_button_placeholder"
-                    app:layout_constraintTop_toTopOf="@id/bottom_bar_bg"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/alfian_wong_main_biru"
-                    android:elevation="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/center_button_placeholder"
-                    app:layout_constraintTop_toTopOf="@id/bottom_bar_bg"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <View
-                    android:id="@+id/center_button_placeholder"
-                    android:layout_width="80dp"
-                    android:layout_height="1dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    app:cardCornerRadius="36dp"
-                    app:cardElevation="10dp"
-                    android:layout_marginBottom="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent">
-
-                    <ImageView
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/alfian_motor_biru" />
-
-                </com.google.android.material.card.MaterialCardView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
