@@ -9,6 +9,25 @@ import androidx.recyclerview.widget.RecyclerView
 
 class BookingActivity : AppCompatActivity() {
 
+    private fun loadRecentTrips() {
+        val prefs = getSharedPreferences("recent_trips", MODE_PRIVATE)
+        val tripsSet = prefs.getStringSet("trips", emptySet()) ?: emptySet()
+
+        savedTrips.clear()
+
+        for (item in tripsSet) {
+            val parts = item.split("|")
+            if (parts.size == 2) {
+                savedTrips.add(
+                    TripHistory(
+                        origin = parts[0],
+                        destination = parts[1]
+                    )
+                )
+            }
+        }
+    }
+
     private fun saveRecentTrip(origin: String, destination: String) {
         val prefs = getSharedPreferences("recent_trips", MODE_PRIVATE)
         val editor = prefs.edit()
@@ -43,6 +62,8 @@ class BookingActivity : AppCompatActivity() {
 // 1. Setup Adapter & Logic Klik Item
         // DEMO NOTE: "Saat user mengklik salah satu item di history,
         // aplikasi otomatis mengisi KEDUA kolom (Jemput & Tujuan) sekaligus."
+        loadRecentTrips()
+
         adapter = LocationAdapter(savedTrips) { selectedTrip ->
             // Saat item riwayat diklik, ISIKAN KEDUA KOLOM SEKALIGUS
             etOrigin.setText(selectedTrip.origin)

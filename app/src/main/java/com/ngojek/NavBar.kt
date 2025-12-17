@@ -25,14 +25,10 @@ class NavBar : Fragment(R.layout.fragment_nav_bar) {
 
         btnHome.setOnClickListener {
             callback.onHomeSelected()
-            btnHome.setImageResource(R.drawable.alfian_rumah_main_biru)
-            btnProfile.setImageResource(R.drawable.alfian_wong_main)
         }
 
         btnProfile.setOnClickListener {
             callback.onProfileSelected()
-            btnHome.setImageResource(R.drawable.alfian_rumah_main)
-            btnProfile.setImageResource(R.drawable.alfian_wong_main_biru)
         }
 
         btnMotor.setOnClickListener {

@@ -29,8 +29,6 @@ class UserSettingFragment : Fragment() {
 
     private lateinit var btnSave: LinearLayout
     private lateinit var btnCancel: LinearLayout
-    private lateinit var btnHome: ImageView
-    private lateinit var iconProfile: ImageView
 
     //Ini adalah wadah penyimpanan data lokal
     //Digunakan untuk menyimpan: nama, email, nomor hp, dan nomor kartu
@@ -87,8 +85,6 @@ class UserSettingFragment : Fragment() {
         btnSave = view.findViewById(R.id.outline_save)
         btnCancel = view.findViewById(R.id.outline_cancel)
 
-        iconProfile = view.findViewById(R.id.btn_profile)
-
         // Memanggil fungsi loadUserData() untuk mengambil data pengguna yang sudah disimpan
         // dari SharedPreferences dan menampilkannya pada EditText atau TextView
         loadUserData()
@@ -116,10 +112,6 @@ class UserSettingFragment : Fragment() {
         btnCancel.setOnClickListener {
             disableAll()
             Toast.makeText(context, "Perubahan dibatalkan.", Toast.LENGTH_SHORT).show()
-            goToHomeFragment()
-        }
-
-        btnHome.setOnClickListener {
             goToHomeFragment()
         }
     }
